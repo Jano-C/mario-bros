@@ -5,7 +5,7 @@ import Fabricas.Sprite;
 
 public class DetectorColisiones {
 	
-	protected int mejora = 7;
+	protected int mejora = 8;
 	
 	public int colisionaCon(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
 		
@@ -31,28 +31,28 @@ public class DetectorColisiones {
 		return ladoColision;
 	}
 	
-    private boolean colisionaConEntidadDerecha(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
+    public boolean colisionaConEntidadDerecha(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
         return entidadLogica.getX() + entidadLogica.getAncho() >= entidadColisionada.getX() &&  
         		entidadLogica.getX() < entidadColisionada.getX() &&
         	entidadLogica.getY() + entidadLogica.getAlto() > entidadColisionada.getY() &&
         	entidadLogica.getY() < entidadColisionada.getY() + entidadColisionada.getAlto();
     }
    
-    private boolean colisionaConEntidadIzquierda(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
+    public boolean colisionaConEntidadIzquierda(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
     	return entidadLogica.getX()  < entidadColisionada.getX() + entidadColisionada.getAncho() &&  
     			entidadLogica.getX() > entidadColisionada.getX() &&
     			entidadLogica.getY() + entidadLogica.getAlto() - (mejora / 2) > entidadColisionada.getY() &&
     			entidadLogica.getY() < entidadColisionada.getY() + entidadColisionada.getAlto();
     }
    
-    private boolean colisionaConEntidadAbajo(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
+    public boolean colisionaConEntidadAbajo(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
     	return entidadLogica.getY() + entidadLogica.getAlto() > entidadColisionada.getY() && 
     			entidadLogica.getY() < entidadColisionada.getY() + entidadColisionada.getAlto() && 
     			entidadLogica.getX() + mejora < entidadColisionada.getX() + entidadColisionada.getAncho() && 
     			entidadLogica.getX() + entidadLogica.getAncho() - mejora > entidadColisionada.getX(); 
     }
    
-    private boolean colisionaConEntidadArriba(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
+    public boolean colisionaConEntidadArriba(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
 	   return entidadLogica.getY() - mejora <= entidadColisionada.getY() + entidadColisionada.getAlto() && 
 			   entidadLogica.getY() + mejora > entidadColisionada.getY() + entidadColisionada.getAlto() && 
 			   entidadLogica.getX()  < entidadColisionada.getX() + entidadColisionada.getAncho() && 

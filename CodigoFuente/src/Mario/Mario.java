@@ -9,6 +9,7 @@ import Enemigo.Lakitu;
 import Enemigo.PiranhaPlant;
 import Enemigo.Spiny;
 import Entidades.EntidadDinamica;
+import Entidades.EntidadLogica;
 import Entidades.EntidadLogicaJugador;
 import Fabricas.FabricaSprites;
 import Fabricas.Sprite;
@@ -327,23 +328,24 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 
 	@Override
 	public void visit(BloqueSolido bloqueSolido, int lado) {
+		corregirPosicion(bloqueSolido, lado);
 	    switch (lado) {
-	        case 1: // Colisión desde la izquierda
-	            izquierda = false;
+	        case 1:
+	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 1
 
 	            break;
-	        case 2: // Colisión desde la derecha
-	            derecha = false;
+	        case 2: 
+	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 2
+	            break;
+	        case 3:
+	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 3
+
 
 	            break;
-	        case 3: // Colisión desde arriba
-	           
-	            gravedad = 1;
-
-	            break;
-	        case 4: // Colisión desde abajo
+	        case 4: 
+	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 4
+	        	velocidadSalto = 0;
 	            enAire = false;
-	            velocidadSalto = 0;
 	            break;
 	    }
 	}
@@ -459,5 +461,39 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 		// TODO Auto-generated method stub
 		
 	}
+	
+	private void corregirPosicion(EntidadLogica entidadLogica, int lado) {
+	    switch (lado) {
+        case 1:
+            corregirPosicionEnColisionPorDerecha(entidadLogica);
+            break;
+        case 2: 
+            corregirPosicionEnColisionPorIzquierda(entidadLogica);
+            break;
+        case 3:
+        	corregirPosicionEnColisionPorAbajo(entidadLogica);
+            break;
+        case 4: 
+            corregirPosicionEnColisionPorEncima(entidadLogica);
+            break;
+	    }
+	}
+	
+	private void corregirPosicionEnColisionPorEncima(EntidadLogica entidadColisionada) {
+		this.setY(entidadColisionada.getY() - entidadColisionada.getAlto()); 
+	}
+	
+	private void corregirPosicionEnColisionPorIzquierda(EntidadLogica entidadColisionada) {
+		this.setX(entidadColisionada.getX() + entidadColisionada.getAncho()); 
+	}
+	
+	private void corregirPosicionEnColisionPorDerecha(EntidadLogica entidadColisionada) {
+		this.setX(entidadColisionada.getX() - this.getAncho()); 
+	}
+	
+	private void corregirPosicionEnColisionPorAbajo(EntidadLogica entidadColisionada) {
+		this.setY(entidadColisionada.getY()  + entidadColisionada.getAlto()); 
+	}
+	
 
 }
