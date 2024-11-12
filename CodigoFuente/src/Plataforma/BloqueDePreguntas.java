@@ -5,6 +5,7 @@ import java.util.Random;
 import Auxiliares.ConstantesAuxiliares;
 import Fabricas.FabricaSprites;
 import Fabricas.Sprite;
+import Juego.Juego;
 import Powerups.ChampinionVerde;
 import Powerups.Estrella;
 import Powerups.FlorDeFuego;
@@ -27,41 +28,51 @@ public class BloqueDePreguntas extends Plataforma{
 		this.fabricaSprites = fabricaSprites;
 	}
 	
-    public PowerUp mostrarPowerUp() {
+    public void mostrarPowerUp(Juego juego) {
         tienePowerUp = false;
-        
+        PowerUp powerUp;
         Random random = new Random();
         int powerUpTipo = random.nextInt(5) + 1;
         
         switch (powerUpTipo) {
             case 1:
-                return new Estrella(fabricaSprites.getEstrella(), posicion.getX(),
+            	powerUp = new Estrella(fabricaSprites.getEstrella(), posicion.getX(),
                                     posicion.getY() - ConstantesAuxiliares.TAMANOBLOQUE_ALTO,
                                     ConstantesAuxiliares.TAMANOBLOQUE_ALTO,
                                     ConstantesAuxiliares.TAMANOBLOQUE_ALTO);
+            	break;
             case 2:
-                return new SuperChampinion(fabricaSprites.getSuperChampinion(), posicion.getX(),
+            	powerUp = new SuperChampinion(fabricaSprites.getSuperChampinion(), posicion.getX(),
                                           posicion.getY() - ConstantesAuxiliares.TAMANOBLOQUE_ALTO,
                                           ConstantesAuxiliares.TAMANOBLOQUE_ALTO,
                                           ConstantesAuxiliares.TAMANOBLOQUE_ALTO);
+            	break;
             case 3:
-                return new FlorDeFuego(fabricaSprites.getFlorDeFuego(), posicion.getX(),
+            	powerUp=  new FlorDeFuego(fabricaSprites.getFlorDeFuego(), posicion.getX(),
                                        posicion.getY() - ConstantesAuxiliares.TAMANOBLOQUE_ALTO,
                                        ConstantesAuxiliares.TAMANOBLOQUE_ALTO,
                                        ConstantesAuxiliares.TAMANOBLOQUE_ALTO);
+            	break;
+            	
             case 4:
-                return new ChampinionVerde(fabricaSprites.getChampinionVerde(), posicion.getX(),
+            	powerUp = new ChampinionVerde(fabricaSprites.getChampinionVerde(), posicion.getX(),
                                           posicion.getY() - ConstantesAuxiliares.TAMANOBLOQUE_ALTO,
                                           ConstantesAuxiliares.TAMANOBLOQUE_ALTO,
                                           ConstantesAuxiliares.TAMANOBLOQUE_ALTO);
+            	break;
             case 5:
-                return new Moneda(fabricaSprites.getMoneda(), posicion.getX(),
+            	powerUp = new Moneda(fabricaSprites.getMoneda(), posicion.getX(),
                                       posicion.getY() - ConstantesAuxiliares.TAMANOBLOQUE_ALTO,
                                       ConstantesAuxiliares.TAMANOBLOQUE_ALTO,
                                       ConstantesAuxiliares.TAMANOBLOQUE_ALTO);
+            	break;
             default:
-                return null;
+            	powerUp = null;
+                break;
         }
+        //Cambiar el sprite del bloque de preguntas al bloque de preguntas vacio.
+        juego.getNivelActual().agregarPowerUp(powerUp);
+        juego.registrarObserverEntidad(powerUp);
     }
 	
 	
@@ -72,7 +83,7 @@ public class BloqueDePreguntas extends Plataforma{
 
 	@Override
 	public void acceptMario(VisitorMario visitorMario, int lado) {
-		visitorMario.visit(this);
+		visitorMario.visit(this, lado);
 		
 	}
 

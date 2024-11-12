@@ -160,12 +160,6 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
         
         actualizarSprite();
 	}
-
-	
-    public void aterrizar() {
-        velocidadSalto = 0;
-        enAire = false;
-    }
     
     public void setVelocidadSalto(int velocidadSalto) {
     	this.velocidadSalto = velocidadSalto;
@@ -339,28 +333,56 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	            break;
 	        case 3:
 	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 3
-
+	        	velocidadSalto = 0;
 
 	            break;
 	        case 4: 
 	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 4
-	        	velocidadSalto = 0;
-	            enAire = false;
 	            break;
 	    }
 	}
 
 
 	@Override
-	public void visit(BloqueDePreguntas bloqueDePreguntas) {
-		// TODO Auto-generated method stub
+	public void visit(BloqueDePreguntas bloqueDePreguntas, int lado) {
+		corregirPosicion(bloqueDePreguntas, lado);
+	    switch (lado) {
+	        case 1:
+	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 1
+	            break;
+	        case 2: 
+	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 2
+	            break;
+	        case 3:
+	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 3
+	        	bloqueDePreguntas.mostrarPowerUp(juego);
+	            break;
+	        case 4: 
+	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 4
+	            break;
+	    }
 		
 	}
 
 
 	@Override
-	public void visit(LadrilloSolido ladrilloSolido) {
-		// TODO Auto-generated method stub
+	public void visit(LadrilloSolido ladrilloSolido, int lado) {
+		corregirPosicion(ladrilloSolido, lado);
+	    switch (lado) {
+	        case 1:
+	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 1
+	            break;
+	        case 2: 
+	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 2
+	            break;
+	        case 3:
+	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 3
+	            break;
+	        case 4: 
+	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 4
+	        	
+	            break;
+	    }
 		
 	}
 
@@ -475,16 +497,18 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
             break;
         case 4: 
             corregirPosicionEnColisionPorEncima(entidadLogica);
+        	velocidadSalto = 0;
+            enAire = false;
             break;
 	    }
 	}
 	
 	private void corregirPosicionEnColisionPorEncima(EntidadLogica entidadColisionada) {
-		this.setY(entidadColisionada.getY() - entidadColisionada.getAlto()); 
+		this.setY(entidadColisionada.getY() - entidadColisionada.getAlto());
 	}
 	
 	private void corregirPosicionEnColisionPorIzquierda(EntidadLogica entidadColisionada) {
-		this.setX(entidadColisionada.getX() + entidadColisionada.getAncho()); 
+		this.setX(entidadColisionada.getX() + entidadColisionada.getAncho());
 	}
 	
 	private void corregirPosicionEnColisionPorDerecha(EntidadLogica entidadColisionada) {
@@ -492,7 +516,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	}
 	
 	private void corregirPosicionEnColisionPorAbajo(EntidadLogica entidadColisionada) {
-		this.setY(entidadColisionada.getY()  + entidadColisionada.getAlto()); 
+		this.setY(entidadColisionada.getY()  + entidadColisionada.getAlto());
 	}
 	
 

@@ -20,8 +20,8 @@ import Powerups.SuperChampinion;
 
 public interface VisitorMario {
 	public void visit(BloqueSolido bloqueSolido, int lado);
-	public void visit(BloqueDePreguntas bloqueDePreguntas);
-	public void visit(LadrilloSolido ladrilloSolido);
+	public void visit(BloqueDePreguntas bloqueDePreguntas, int lado);
+	public void visit(LadrilloSolido ladrilloSolido, int lado);
 	public void visit(Tuberia tuberia);
 	public void visit(Vacio vacio);
 	public void visit(BuzzyBeetle buzzyBeetle);

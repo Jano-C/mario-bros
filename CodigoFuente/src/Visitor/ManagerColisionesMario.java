@@ -26,7 +26,7 @@ import Powerups.Moneda;
 import Powerups.PowerUp;
 import Powerups.SuperChampinion;
 
-public class ManagerColisionesMario implements VisitorMario {
+public class ManagerColisionesMario {
 
 //	protected Mario mario;
 //	protected Nivel nivelActual;
@@ -352,113 +352,113 @@ public class ManagerColisionesMario implements VisitorMario {
 //	   juego.getControladorVistas().mostrarPantallaPerder();
 //   }
    
-   protected void vaciarBloqueDePreguntas(EntidadLogica entidadLogica) {
-       entidadLogica.setSprite(new Sprite("/Imagenes/1bloqueDePreguntasVacio.png"));
-       entidadLogica.notificarObserver();
-   }
-
-@Override
-public void visit(BloqueSolido bloqueSolido, int lado) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(BloqueDePreguntas bloqueDePreguntas) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(LadrilloSolido ladrilloSolido) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(Tuberia tuberia) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(Vacio vacio) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(BuzzyBeetle buzzyBeetle) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(Goomba gommba) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(KoopaTroopa koopaTroopa) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(Lakitu lakitu) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(PiranhaPlant piranhaPlant) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(Spiny spiny) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(ChampinionVerde champinionVerde) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(Estrella estrella) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(FlorDeFuego florDeFuego) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(Moneda moneda) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(SuperChampinion superChampinion) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void visit(Llegada llegada) {
-	// TODO Auto-generated method stub
-	
-}
-	
+//   protected void vaciarBloqueDePreguntas(EntidadLogica entidadLogica) {
+//       entidadLogica.setSprite(new Sprite("/Imagenes/1bloqueDePreguntasVacio.png"));
+//       entidadLogica.notificarObserver();
+//   }
+//
+//@Override
+//public void visit(BloqueSolido bloqueSolido, int lado) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(BloqueDePreguntas bloqueDePreguntas) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(LadrilloSolido ladrilloSolido) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(Tuberia tuberia) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(Vacio vacio) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(BuzzyBeetle buzzyBeetle) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(Goomba gommba) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(KoopaTroopa koopaTroopa) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(Lakitu lakitu) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(PiranhaPlant piranhaPlant) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(Spiny spiny) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(ChampinionVerde champinionVerde) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(Estrella estrella) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(FlorDeFuego florDeFuego) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(Moneda moneda) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(SuperChampinion superChampinion) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//
+//@Override
+//public void visit(Llegada llegada) {
+//	// TODO Auto-generated method stub
+//	
+//}
+//	
 
 
 
