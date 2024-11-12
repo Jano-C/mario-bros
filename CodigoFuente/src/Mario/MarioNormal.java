@@ -1,0 +1,142 @@
+package Mario;
+
+import Auxiliares.ConstantesAuxiliares;
+import Enemigo.Enemigo;
+import Enemigo.PiranhaPlant;
+import Enemigo.Spiny;
+import Fabricas.FabricaSprites;
+import Fabricas.Sprite;
+import Powerups.PowerUp;
+
+public class MarioNormal implements EstadoMario{
+	
+	protected Sprite sprite;
+	protected Mario mario;
+	protected FabricaSprites fabricaSprites;
+	protected Sprite marioIdleRight;
+    protected Sprite marioIdleLeft;
+    protected Sprite marioMovingRight;
+    protected Sprite marioMovingLeft;
+    protected Sprite marioJumpingRight;
+    protected Sprite marioJumpingLeft;
+
+    public MarioNormal(Mario mario) {
+        this.mario = mario;
+        fabricaSprites = mario.getFabrica();
+        this.sprite = fabricaSprites.getMarioIdleRight();
+        marioIdleRight = fabricaSprites.getMarioIdleRight();
+        marioIdleLeft  = fabricaSprites.getMarioIdleLeft();
+        marioMovingRight = fabricaSprites.getMarioMovingRight();
+        marioMovingLeft = fabricaSprites.getMarioMovingLeft();
+        marioJumpingRight = fabricaSprites.getMarioJumpingRight();
+        marioJumpingLeft = fabricaSprites.getMarioJumpingLeft();
+
+        mario.setAlto(ConstantesAuxiliares.MARIONORMAL_ALTO);
+
+    }
+
+	@Override
+	public void recibirGolpe(int puntosARestar) {
+		mario.restarVidas();
+		mario.saltar();
+		if(mario.getVidas() == 0) {
+			mario.getJuego().terminarJuego();
+		}	
+	}
+
+	@Override
+	public Sprite getSprite() {
+		return sprite;
+	}
+	
+	public void serAfectadoPorPowerUp(PowerUp powerUp) {
+		powerUp.aplicarEfecto(this);
+	}
+
+	@Override
+	public void sumarPuntos(int puntos) {
+		mario.sumarPuntaje(puntos);
+		
+	}
+
+	@Override
+	public void setEstado(EstadoMario estadoMario) {
+		mario.setEstado(estadoMario);
+		
+	}
+	
+	public Mario getMario() {
+		return mario;
+	}
+
+	@Override
+	public boolean atacar(Enemigo enemigo) {
+		enemigo.serAfectadoPorJugador(mario);
+		return false;
+	}
+	
+	@Override
+	public boolean atacar(Spiny spiny) {
+		spiny.atacar(mario);
+		return false;
+	}
+	
+	@Override
+	public boolean atacar(PiranhaPlant piranhaPlant) {
+		piranhaPlant.atacar(mario);
+		return false;
+	}
+
+	@Override
+	public Sprite getSpriteMoviendoseDerecha() {
+		return marioMovingRight;
+	}
+
+	@Override
+	public Sprite getSpriteMoviendoseIzquierda() {
+		return marioMovingLeft;
+	}
+
+	@Override
+	public Sprite getSpriteIdleDerecha() {
+		return marioIdleRight;
+	}
+
+	@Override
+	public Sprite getSpriteIdeIzquierda() {
+		return marioIdleLeft;
+	}
+
+	@Override
+	public Sprite getSpriteSaltandoIzquierda() {
+		return marioJumpingLeft;
+	}
+
+	@Override
+	public Sprite getSpriteSaltandoDerecha() {
+		return marioJumpingRight;
+	}
+
+	@Override
+	public boolean chocharLadrilloSolido() {
+		return false;
+	}
+
+	@Override
+	public void crearBolaDeFuego() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public EstadoMario getEstadoAnterior() {
+		return this;
+	}
+	
+	@Override
+	public int getAlto() {
+		return ConstantesAuxiliares.MARIONORMAL_ALTO;
+	}
+
+
+	
+}
