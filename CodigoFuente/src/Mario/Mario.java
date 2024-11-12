@@ -1,7 +1,11 @@
 package Mario;
 
 import Auxiliares.ConstantesAuxiliares;
+import Enemigo.BuzzyBeetle;
 import Enemigo.Enemigo;
+import Enemigo.Goomba;
+import Enemigo.KoopaTroopa;
+import Enemigo.Lakitu;
 import Enemigo.PiranhaPlant;
 import Enemigo.Spiny;
 import Entidades.EntidadDinamica;
@@ -9,10 +13,23 @@ import Entidades.EntidadLogicaJugador;
 import Fabricas.FabricaSprites;
 import Fabricas.Sprite;
 import Juego.Juego;
+import Plataforma.BloqueDePreguntas;
+import Plataforma.BloqueSolido;
+import Plataforma.LadrilloSolido;
+import Plataforma.Llegada;
+import Plataforma.Plataforma;
+import Plataforma.Tuberia;
+import Plataforma.Vacio;
+import Powerups.ChampinionVerde;
+import Powerups.Estrella;
+import Powerups.FlorDeFuego;
+import Powerups.Moneda;
 import Powerups.PowerUp;
+import Powerups.SuperChampinion;
+import Visitor.VisitorMario;
 
 
-public class Mario extends EntidadDinamica implements EntidadLogicaJugador{
+public class Mario extends EntidadDinamica implements EntidadLogicaJugador, VisitorMario{
 	
 	protected Juego juego;
 	protected EstadoMario estadoActual;
@@ -121,7 +138,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador{
 	}
 	
 
-	public void actualizarPosicion() {
+	public void moverse() {
 
         chequearSiTieneQueCaer();
         actualizarPosicionGravedad();
@@ -303,6 +320,144 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador{
 	
 	public void notificarMarioEstrella() {
 		juego.marioEstaEnEstrella();
+	}
+
+
+
+
+	@Override
+	public void visit(BloqueSolido bloqueSolido, int lado) {
+	    switch (lado) {
+	        case 1: // Colisión desde la izquierda
+	            izquierda = false;
+
+	            break;
+	        case 2: // Colisión desde la derecha
+	            derecha = false;
+
+	            break;
+	        case 3: // Colisión desde arriba
+	           
+	            gravedad = 1;
+
+	            break;
+	        case 4: // Colisión desde abajo
+	            enAire = false;
+	            velocidadSalto = 0;
+	            break;
+	    }
+	}
+
+
+	@Override
+	public void visit(BloqueDePreguntas bloqueDePreguntas) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(LadrilloSolido ladrilloSolido) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(Tuberia tuberia) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(Vacio vacio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(BuzzyBeetle buzzyBeetle) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(Goomba gommba) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(KoopaTroopa koopaTroopa) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(Lakitu lakitu) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(PiranhaPlant piranhaPlant) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(Spiny spiny) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(ChampinionVerde champinionVerde) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(Estrella estrella) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(FlorDeFuego florDeFuego) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(Moneda moneda) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(SuperChampinion superChampinion) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(Llegada llegada) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

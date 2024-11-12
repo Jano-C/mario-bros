@@ -17,11 +17,11 @@ public class ManagerMovimientoMario extends Thread {
 	public ManagerMovimientoMario(Juego juego) {
 		this.juego = juego;
 		this.marioEstaEnEstrella = false;
-		managerColisionesMario  = new ManagerColisionesMario(juego);
 	}
 	  
 		@Override
 		public void run() {
+			Mario mario = juego.getNivelActual().getMario();
 			running = true;
 			double drawInterval =  1000000000/60;
 			double delta = 0;
@@ -34,26 +34,12 @@ public class ManagerMovimientoMario extends Thread {
 				
 				if(delta > 1) {
 					
-					
-					
-					Mario mario = juego.getNivelActual().getMario();
-	                mario.actualizarPosicion();
+					//Aca tendriamos que tener un metodo de juego que detecte colisiones y maneje.
+					juego.detectarColisionesMarioYManejar();
+	                mario.moverse();
 	                
-	                for (Plataforma plataforma : juego.getNivelActual().getPlataformas()) {
-	                    plataforma.acceptMario(managerColisionesMario);
-	                }
+
 	                
-	                for (Enemigo enemigo : juego.getNivelActual().getEnemigos()) {
-	                    enemigo.acceptMario(managerColisionesMario);
-	                }
-	                
-	                for (PowerUp powerUp : juego.getNivelActual().getPowerUps()) {
-	                	powerUp.acceptMario(managerColisionesMario);
-	                }
-	                
-	                managerColisionesMario.eliminarEnemigos();
-	                managerColisionesMario.eliminarPowerUps();
-	                managerColisionesMario.eliminarPlataformas();
 	                
 	                if(marioEstaEnEstrella) {
 	                	if(inicioMarioEstrella >= finalMarioEstrella) {

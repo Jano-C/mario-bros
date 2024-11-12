@@ -13,7 +13,7 @@ public class ManagerMovimientoBolaDeFuego extends Thread {
 	
 	public ManagerMovimientoBolaDeFuego(Juego juego) {
 		this.juego = juego;
-		managerColisionesBolaDeFuego = new ManagerColisionesBolaDeFuego(juego);
+//		managerColisionesBolaDeFuego = new ManagerColisionesBolaDeFuego(juego);
 	}
 	
 	
@@ -31,22 +31,22 @@ public class ManagerMovimientoBolaDeFuego extends Thread {
 			
 			if(delta > 1) {
 				
-				managerColisionesBolaDeFuego.actualizarLista(juego.getNivelActual().getBolasDeFuego());
+//				managerColisionesBolaDeFuego.actualizarLista(juego.getNivelActual().getBolasDeFuego());
 			
 				for(BolaDeFuego bolaDeFuego : juego.getNivelActual().getBolasDeFuego()) {
 					bolaDeFuego.actualizarPosicion();
 				}
 				
 				for(Enemigo enemigo : juego.getNivelActual().getEnemigos()) {
-					enemigo.acceptBolaDeFuego(managerColisionesBolaDeFuego);
+//					enemigo.acceptBolaDeFuego(managerColisionesBolaDeFuego);
 				}
-				
-				for(Plataforma plataforma : juego.getNivelActual().getPlataformas()) {
-					plataforma.acceptBolaDeFuego(managerColisionesBolaDeFuego);
-				}
-				
-				managerColisionesBolaDeFuego.eliminarEnemigos();
-				managerColisionesBolaDeFuego.eliminarPlataformas();
+//				
+//				for(Plataforma plataforma : juego.getNivelActual().getPlataformas()) {
+//					plataforma.acceptBolaDeFuego(managerColisionesBolaDeFuego);
+//				}
+//				
+//				managerColisionesBolaDeFuego.eliminarEnemigos();
+//				managerColisionesBolaDeFuego.eliminarPlataformas();
                 delta--;
 			}
 			

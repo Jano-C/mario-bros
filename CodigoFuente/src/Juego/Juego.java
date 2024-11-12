@@ -1,6 +1,9 @@
 package Juego;
 
 import java.util.List;
+
+import Auxiliares.DetectorColisiones;
+import Enemigo.Enemigo;
 import Entidades.Entidad;
 import Fabricas.FabricaEntidades;
 import Fabricas.FabricaSonidos;
@@ -8,6 +11,8 @@ import Fabricas.FabricaSprites;
 import GeneradorNiveles.GeneradorNiveles;
 import Mario.BolaDeFuego;
 import Mario.Mario;
+import Plataforma.Plataforma;
+import Powerups.PowerUp;
 import Ranking.Ranking;
 import Vistas.ControladorVistas;
 import Vistas.KeyHandler;
@@ -27,11 +32,13 @@ public class Juego {
 	protected String nombre;
 	protected ManagerMovimientoBolaDeFuego managerMovimientoBolaDeFuego;
 	protected FabricaSonidos fabricaSonidos;
+	protected DetectorColisiones detectorColisiones;
+	
 	public Juego() {
-
 		ranking= Ranking.getInstancia();
 		ranking.cargarRankingDesdeArchivo();
 		fabricaSonidos = new FabricaSonidos();
+		detectorColisiones = new DetectorColisiones();
 	}
 	
 	public void iniciarMusicaJuego() {
@@ -163,6 +170,18 @@ public class Juego {
 
 	public Nivel getNivelActual() {
 		return nivelActual;
+	}
+	
+	public void detectarColisionesMarioYManejar() {
+		
+        for (Plataforma plataforma : nivelActual.getPlataformas()) {
+        	int lado = detectorColisiones.colisionaCon(nivelActual.getMario(), plataforma);
+            if (lado != 0) {
+            	plataforma.acceptMario(nivelActual.getMario(), lado);
+            }
+        }
+        
+
 	}
 	
 	

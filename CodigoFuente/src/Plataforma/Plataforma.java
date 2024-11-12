@@ -15,5 +15,7 @@ public abstract class Plataforma extends Entidad implements Visitable, Visitable
 	}
 	
 	public void serAfectadoPorJugador(Mario mario) {};
-	public void serAfectadoPorBolaDeFuego(BolaDeFuego b) {};
+	public void serAfectadoPorBolaDeFuego(BolaDeFuego b) {}
+
+
 }

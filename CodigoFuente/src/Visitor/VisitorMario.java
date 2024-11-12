@@ -19,7 +19,7 @@ import Powerups.Moneda;
 import Powerups.SuperChampinion;
 
 public interface VisitorMario {
-	public void visit(BloqueSolido bloqueSolido);
+	public void visit(BloqueSolido bloqueSolido, int lado);
 	public void visit(BloqueDePreguntas bloqueDePreguntas);
 	public void visit(LadrilloSolido ladrilloSolido);
 	public void visit(Tuberia tuberia);

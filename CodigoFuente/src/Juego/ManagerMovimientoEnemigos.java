@@ -18,7 +18,7 @@ public class ManagerMovimientoEnemigos extends Thread {
 
     public ManagerMovimientoEnemigos(Juego juego) {
         this.juego = juego;
-        managerColisionesEnemigo = new ManagerColisionesEnemigo(juego.getNivelActual().getEnemigos());
+//        managerColisionesEnemigo = new ManagerColisionesEnemigo(juego.getNivelActual().getEnemigos());
     }
 
     @Override
@@ -29,14 +29,14 @@ public class ManagerMovimientoEnemigos extends Thread {
         while (running) {
             long startTime = System.currentTimeMillis();
 
-            managerColisionesEnemigo.actualizarLista(juego.getNivelActual().getEnemigos());
+//            managerColisionesEnemigo.actualizarLista(juego.getNivelActual().getEnemigos());
 
             for (Enemigo enemigo : juego.getNivelActual().getEnemigos()) {
                 enemigo.actualizarPosicion();
             }
 
             for (Plataforma plataforma : juego.getNivelActual().getPlataformas()) {
-                plataforma.acceptEnemigo(managerColisionesEnemigo);
+//                plataforma.acceptEnemigo(managerColisionesEnemigo);
             }
 
             long currentMillis = System.currentTimeMillis();

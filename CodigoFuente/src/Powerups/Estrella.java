@@ -20,7 +20,7 @@ public class Estrella extends PowerUp{
 	}
 
 	@Override
-	public void acceptMario(VisitorMario visitorMario) {
+	public void acceptMario(VisitorMario visitorMario, int lado) {
 		visitorMario.visit(this);
 	}
 
