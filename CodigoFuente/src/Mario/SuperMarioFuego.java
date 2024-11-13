@@ -25,6 +25,11 @@ public class SuperMarioFuego extends SuperMario{
         marioJumpingRight = fabricaSprites.getSuperMarioFuegoJumpingRight();
         marioJumpingLeft = fabricaSprites.getSuperMarioFuegoJumpingLeft();
     }
+    
+	@Override
+	public void chocharLadrilloSolido(LadrilloSolido ladrilloSolido) {
+
+	}
 
     private boolean puedeLanzarBolaDeFuego() {
         return System.currentTimeMillis() - ultimoLanzamiento >= DELAY_LANZAMIENTO;

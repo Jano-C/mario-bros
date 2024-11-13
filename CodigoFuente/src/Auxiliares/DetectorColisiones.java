@@ -12,19 +12,19 @@ public class DetectorColisiones {
 		int ladoColision = 0;
 		
 		if(colisionaConEntidadDerecha(entidadLogica,entidadColisionada)) {
-			System.out.println("Colisiona con entidad a su derecha.");
+			
 			ladoColision = 1;
 		}
 		if(colisionaConEntidadAbajo(entidadLogica,entidadColisionada)) {
-			System.out.println("Colisiona con entidad a su abajo.");
+			
 			ladoColision = 4;
 		}
 		if(colisionaConEntidadArriba(entidadLogica,entidadColisionada)) {
-			System.out.println("Colisiona con entidad arriba.");
+			
 			ladoColision = 3;
 		}
 		if(colisionaConEntidadIzquierda(entidadLogica,entidadColisionada)) {
-			System.out.println("Colisiona con entidad izquierda.");
+			
 			ladoColision = 2;
 		}
 		

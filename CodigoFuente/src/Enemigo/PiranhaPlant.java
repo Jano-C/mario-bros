@@ -2,6 +2,7 @@ package Enemigo;
 
 import Fabricas.Sprite;
 import Mario.Mario;
+import Plataforma.Plataforma;
 import Visitor.VisitorBolaDeFuego;
 import Visitor.VisitorMario;
 
@@ -57,6 +58,11 @@ public class PiranhaPlant extends Enemigo{
 	public void serAfectadoPorBolaDeFuego(Mario mario) {
 		mario.sumarPuntaje(30);
 		
+	}
+	
+	@Override
+	public void visit(Plataforma plataforma, int lado) {
+		//No debe hacer nada
 	}
 
 
