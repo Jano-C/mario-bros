@@ -107,6 +107,7 @@ public abstract class Enemigo extends EntidadDinamica implements Visitable, Visi
 
             break;
         case 4: 
+        	this.setY((entidadLogica.getY() - this.getAlto()) - 1);
             enAire = false;
             break;
 	    }

@@ -34,18 +34,18 @@ public class ManagerMovimientoEnemigos extends Thread {
                 enemigo.actualizarPosicion();
             }
 
-            long currentMillis = System.currentTimeMillis();
-            if (currentMillis - lastSpinyTime >= SPINY_INTERVAL && currentMillis - lastSpinyTime <= SPINY_INTERVAL + 1000) {
-                for (Lakitu lakitu : juego.getNivelActual().getLakitus()) {
-                    if (lakitu.tieneSpinys()) {
-                        Spiny spiny = lakitu.arrojarSpiny();
-                        juego.registrarObserverEntidad(spiny);
-                        juego.getNivelActual().agregarEnemigo(spiny);
-                        lakitu.restarSpiny();
-                    }
-                }
-                lastSpinyTime = currentMillis;
-            }
+//            long currentMillis = System.currentTimeMillis();
+//            if (currentMillis - lastSpinyTime >= SPINY_INTERVAL && currentMillis - lastSpinyTime <= SPINY_INTERVAL + 1000) {
+//                for (Lakitu lakitu : juego.getNivelActual().getLakitus()) {
+//                    if (lakitu.tieneSpinys()) {
+//                        Spiny spiny = lakitu.arrojarSpiny();
+//                        juego.registrarObserverEntidad(spiny);
+//                        juego.getNivelActual().agregarEnemigo(spiny);
+//                        lakitu.restarSpiny();
+//                    }
+//                }
+//                lastSpinyTime = currentMillis;
+//            }
 
             long timeTaken = System.currentTimeMillis() - startTime;
             long sleepTime = FRAME_TIME - timeTaken;
