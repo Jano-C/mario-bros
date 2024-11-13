@@ -8,8 +8,6 @@ import Visitor.VisitorMario;
 
 public class Lakitu extends Enemigo{
 	
-	private static final int PUNTOS_A_SUMAR = 60;
-	private static final int PUNTOS_A_RESTAR = 0;
 	protected int cantidadSpinys;
 	protected Sprite izquierda, derecha;
 	protected FabricaSprites fabricaSprites;
@@ -22,13 +20,13 @@ public class Lakitu extends Enemigo{
 	}
 	
 	public void serAfectadoPorJugador(Mario mario) {
-		mario.sumarPuntaje(PUNTOS_A_SUMAR);
+		mario.sumarPuntaje(60);
 		mario.setAire(false);
 		mario.saltar();
 	}
 	
 	public void atacar(Mario mario) {
-		mario.recibirGolpe(PUNTOS_A_RESTAR);
+		mario.recibirGolpe(0);
 		mario.setAire(false);
 		mario.saltar();
 	}
@@ -52,7 +50,9 @@ public class Lakitu extends Enemigo{
 
 	@Override
 	public void acceptMario(VisitorMario visitorMario, int lado) {
+
 		visitorMario.visit(this, lado);
+
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class Lakitu extends Enemigo{
 	
 	@Override
 	public void serAfectadoPorBolaDeFuego(Mario mario) {
-		mario.sumarPuntaje(PUNTOS_A_SUMAR);
+		mario.sumarPuntaje(60);
 		
 	}
 }

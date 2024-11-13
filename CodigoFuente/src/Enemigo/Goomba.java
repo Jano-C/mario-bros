@@ -7,8 +7,8 @@ import Visitor.VisitorMario;
 
 public class Goomba extends Enemigo{
 
-	private static final int PUNTOS_A_SUMAR = 60;
-	private static final int PUNTOS_A_RESTAR = 30;
+	
+	
 	protected Sprite izquierda, derecha;
 	
 	public Goomba(Sprite sprite,Sprite derecha, Sprite izquierda,  int x, int y, int ancho, int alto) {
@@ -16,25 +16,27 @@ public class Goomba extends Enemigo{
 	}
 	
 	public void atacar(Mario mario) {
-		mario.recibirGolpe(PUNTOS_A_RESTAR);
+		mario.recibirGolpe(30);
 		mario.setAire(false);
 		mario.saltar();
 	}
 	
 	@Override
 	public void acceptMario(VisitorMario visitorMario, int lado) {
+
 		visitorMario.visit(this, lado);
+
 	}
 
 	public void serAfectadoPorJugador(Mario mario) {
-		mario.sumarPuntaje(PUNTOS_A_SUMAR);
+		mario.sumarPuntaje(60);
 		mario.setAire(false);
 		mario.saltar();
 	}
 	
 	@Override
 	public void serAfectadoPorBolaDeFuego(Mario mario) {
-		mario.sumarPuntaje(PUNTOS_A_SUMAR);
+		mario.sumarPuntaje(60);
 	}
 
 	@Override
