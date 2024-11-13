@@ -22,14 +22,14 @@ public interface VisitorMario {
 	public void visit(BloqueSolido bloqueSolido, int lado);
 	public void visit(BloqueDePreguntas bloqueDePreguntas, int lado);
 	public void visit(LadrilloSolido ladrilloSolido, int lado);
-	public void visit(Tuberia tuberia);
-	public void visit(Vacio vacio);
-	public void visit(BuzzyBeetle buzzyBeetle);
-	public void visit(Goomba gommba);
-	public void visit(KoopaTroopa koopaTroopa);
-	public void visit(Lakitu lakitu);
-	public void visit(PiranhaPlant piranhaPlant);
-	public void visit(Spiny spiny);
+	public void visit(Tuberia tuberia, int lado);
+	public void visit(Vacio vacio, int lado);
+	public void visit(BuzzyBeetle buzzyBeetle, int lado);
+	public void visit(Goomba gommba, int lado);
+	public void visit(KoopaTroopa koopaTroopa, int lado);
+	public void visit(Lakitu lakitu, int lado);
+	public void visit(PiranhaPlant piranhaPlant, int lado);
+	public void visit(Spiny spiny, int lado);
 	
 	public void visit(ChampinionVerde champinionVerde);
 	public void visit(Estrella estrella);

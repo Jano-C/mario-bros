@@ -325,19 +325,19 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 		corregirPosicion(bloqueSolido, lado);
 	    switch (lado) {
 	        case 1:
-	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 1
+	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 1 (derecha)
 
 	            break;
 	        case 2: 
-	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 2
+	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 2 (izquierda)
 	            break;
 	        case 3:
-	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 3
+	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 3 (arriba)
 	        	velocidadSalto = 0;
 
 	            break;
 	        case 4: 
-	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 4
+	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 4 (abajo)
 	            break;
 	    }
 	}
@@ -351,14 +351,14 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 1
 	            break;
 	        case 2: 
-	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 2
+	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 2 (izquierda)
 	            break;
 	        case 3:
-	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 3
+	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 3 (arriba)
 	        	bloqueDePreguntas.mostrarPowerUp(juego);
 	            break;
 	        case 4: 
-	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 4
+	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 4 (abajo)
 	            break;
 	    }
 		
@@ -370,16 +370,16 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 		corregirPosicion(ladrilloSolido, lado);
 	    switch (lado) {
 	        case 1:
-	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 1
+	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 1 (derecha)
 	            break;
 	        case 2: 
-	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 2
+	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 2 (izquierda)
 	            break;
 	        case 3:
-	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 3
+	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 3 (arriba)
 	            break;
 	        case 4: 
-	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 4
+	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 4 (abajo)
 	        	
 	            break;
 	    }
@@ -388,57 +388,169 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 
 
 	@Override
-	public void visit(Tuberia tuberia) {
-		// TODO Auto-generated method stub
+	public void visit(Tuberia tuberia, int lado) {
+	    switch (lado) {
+	        case 1:
+	        	//Que pasa cuando mario colisiona con tuberia por lado 1 (derecha)
+	            break;
+	        case 2: 
+	        	//Que pasa cuando mario colisiona con tuberia por lado 2 (izquierda)
+	            break;
+	        case 3:
+	        	//Que pasa cuando mario colisiona con tuberia por lado 3 (arriba)
+	            break;
+	        case 4: 
+	        	//Que pasa cuando mario colisiona con tuberia por lado 4 (abajo)
+	        	
+	            break;
+	    }
 		
 	}
 
 
 	@Override
-	public void visit(Vacio vacio) {
-		// TODO Auto-generated method stub
+	public void visit(Vacio vacio, int lado) {
+		switch (lado) {
+        case 1:
+        	//Que pasa cuando mario colisiona con vacio por lado 1 (derecha)
+            break;
+        case 2: 
+        	//Que pasa cuando mario colisiona con vacio por lado 2 (izquierda)
+            break;
+        case 3:
+        	//Que pasa cuando mario colisiona con vacio por lado 3 (arriba)
+            break;
+        case 4: 
+        	//Que pasa cuando mario colisiona con vacio por lado 4 (abajo)
+        	
+            break;
+    }
 		
 	}
 
 
 	@Override
-	public void visit(BuzzyBeetle buzzyBeetle) {
-		// TODO Auto-generated method stub
+	public void visit(BuzzyBeetle buzzyBeetle, int lado) {
+		switch (lado) {
+        case 1:
+        	//Que pasa cuando mario colisiona con buzzyBeetle por lado 1 (derecha)
+            break;
+        case 2: 
+        	//Que pasa cuando mario colisiona con buzzyBeetle por lado 2 (izquierda)
+            break;
+        case 3:
+        	//Que pasa cuando mario colisiona con buzzyBeetle por lado 3 (arriba)
+            break;
+        case 4: 
+        	//Que pasa cuando mario colisiona con buzzyBeetle por lado 4 (abajo)
+        	
+            break;
+    }
 		
 	}
 
 
 	@Override
-	public void visit(Goomba gommba) {
-		// TODO Auto-generated method stub
+	public void visit(Goomba gommba, int lado) {
+		switch (lado) {
+        case 1:
+        	//Que pasa cuando mario colisiona con gommba por lado 1 (derecha)
+            break;
+        case 2: 
+        	//Que pasa cuando mario colisiona con gommba por lado 2 (izquierda)
+            break;
+        case 3:
+        	//Que pasa cuando mario colisiona con gommba por lado 3 (arriba)
+            break;
+        case 4: 
+        	//Que pasa cuando mario colisiona con gommba por lado 4 (abajo)
+        	
+            break;
+    }
 		
 	}
 
 
 	@Override
-	public void visit(KoopaTroopa koopaTroopa) {
-		// TODO Auto-generated method stub
+	public void visit(KoopaTroopa koopaTroopa, int lado) {
+		switch (lado) {
+        case 1:
+        	//Que pasa cuando mario colisiona con koopaTroopa por lado 1 (derecha)
+            break;
+        case 2: 
+        	//Que pasa cuando mario colisiona con koopaTroopa por lado 2 (izquierda)
+            break;
+        case 3:
+        	//Que pasa cuando mario colisiona con koopaTroopa por lado 3 (arriba)
+            break;
+        case 4: 
+        	//Que pasa cuando mario colisiona con koopaTroopa por lado 4 (abajo)
+        	
+            break;
+    }
 		
 	}
 
 
 	@Override
-	public void visit(Lakitu lakitu) {
-		// TODO Auto-generated method stub
+	public void visit(Lakitu lakitu, int lado) {
+		switch (lado) {
+        case 1:
+        	//Que pasa cuando mario colisiona con lakitu por lado 1 (derecha)
+            break;
+        case 2: 
+        	//Que pasa cuando mario colisiona con lakitu por lado 2 (izquierda)
+            break;
+        case 3:
+        	//Que pasa cuando mario colisiona con lakitu por lado 3 (arriba)
+            break;
+        case 4: 
+        	//Que pasa cuando mario colisiona con lakitu por lado 4 (abajo)
+        	
+            break;
+    }
 		
 	}
 
 
 	@Override
-	public void visit(PiranhaPlant piranhaPlant) {
-		// TODO Auto-generated method stub
+	public void visit(PiranhaPlant piranhaPlant, int lado) {
+		switch (lado) {
+        case 1:
+        	//Que pasa cuando mario colisiona con piranhaPlant por lado 1 (derecha)
+            break;
+        case 2: 
+        	//Que pasa cuando mario colisiona con piranhaPlant por lado 2 (izquierda)
+            break;
+        case 3:
+        	//Que pasa cuando mario colisiona con piranhaPlant por lado 3 (arriba)
+            break;
+        case 4: 
+        	//Que pasa cuando mario colisiona con piranhaPlant por lado 4 (abajo)
+        	
+            break;
+    }
 		
 	}
 
 
 	@Override
-	public void visit(Spiny spiny) {
-		// TODO Auto-generated method stub
+	public void visit(Spiny spiny, int lado) {
+		switch (lado) {
+        case 1:
+        	//Que pasa cuando mario colisiona con spiny por lado 1 (derecha)
+            break;
+        case 2: 
+        	//Que pasa cuando mario colisiona con spiny por lado 2 (izquierda)
+            break;
+        case 3:
+        	//Que pasa cuando mario colisiona con spiny por lado 3 (arriba)
+            break;
+        case 4: 
+        	//Que pasa cuando mario colisiona con spiny por lado 4 (abajo)
+        	
+            break;
+    }
 		
 	}
 
