@@ -6,6 +6,7 @@ import Enemigo.PiranhaPlant;
 import Enemigo.Spiny;
 import Fabricas.FabricaSprites;
 import Fabricas.Sprite;
+import Plataforma.LadrilloSolido;
 import Powerups.PowerUp;
 
 public class MarioNormal implements EstadoMario{
@@ -70,21 +71,18 @@ public class MarioNormal implements EstadoMario{
 	}
 
 	@Override
-	public boolean atacar(Enemigo enemigo) {
+	public void atacar(Enemigo enemigo) {
 		enemigo.serAfectadoPorJugador(mario);
-		return false;
 	}
 	
 	@Override
-	public boolean atacar(Spiny spiny) {
+	public void chocarSpiny(Spiny spiny) {
 		spiny.atacar(mario);
-		return false;
 	}
 	
 	@Override
-	public boolean atacar(PiranhaPlant piranhaPlant) {
+	public void chocarPiranhaPlant(PiranhaPlant piranhaPlant) {
 		piranhaPlant.atacar(mario);
-		return false;
 	}
 
 	@Override
@@ -118,8 +116,8 @@ public class MarioNormal implements EstadoMario{
 	}
 
 	@Override
-	public boolean chocharLadrilloSolido() {
-		return false;
+	public void chocharLadrilloSolido(LadrilloSolido ladrilloSolido) {
+		
 	}
 
 	@Override

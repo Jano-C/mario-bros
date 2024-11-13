@@ -181,7 +181,32 @@ public class Juego {
             }
         }
         
-
+        for (Enemigo enemigo : nivelActual.getEnemigos()) {
+        	int lado = detectorColisiones.colisionaCon(nivelActual.getMario(), enemigo);
+            if (lado != 0) {
+            	enemigo.acceptMario(nivelActual.getMario(), lado);
+            }
+        }
+        
+        for (PowerUp powerUp : nivelActual.getPowerUps()) {
+        	int lado = detectorColisiones.colisionaCon(nivelActual.getMario(), powerUp);
+            if (lado != 0) {
+            	powerUp.acceptMario(nivelActual.getMario(), lado);
+            }
+        }
+        
+	}
+	
+	public void detectarColisionesEnemigosYManejar() {
+		
+		for(Enemigo enemigo : nivelActual.getEnemigos()) {
+			for(Plataforma plataforma : nivelActual.getPlataformas()) {
+				int lado = detectorColisiones.colisionaCon(enemigo, plataforma);
+				if(lado != 0) {
+					plataforma.acceptEnemigo(enemigo, lado);
+				}
+			}
+		}
 	}
 	
 	

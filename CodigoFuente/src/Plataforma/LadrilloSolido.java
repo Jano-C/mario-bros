@@ -23,8 +23,8 @@ public class LadrilloSolido extends Plataforma implements VisitablePorBolaDeFueg
 	}
 
 	@Override
-	public void acceptEnemigo(VisitorEnemigo visitorEnemigo) {
-		visitorEnemigo.visit(this);
+	public void acceptEnemigo(VisitorEnemigo visitorEnemigo, int lado) {
+		visitorEnemigo.visit(this, lado);
 		
 	};
 }

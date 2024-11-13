@@ -21,8 +21,8 @@ public class BloqueSolido extends Plataforma{
 	}
 
 	@Override
-	public void acceptEnemigo(VisitorEnemigo visitorEnemigo) {
-		visitorEnemigo.visit(this);
+	public void acceptEnemigo(VisitorEnemigo visitorEnemigo, int lado) {
+		visitorEnemigo.visit(this, lado);
 	}
 
 	

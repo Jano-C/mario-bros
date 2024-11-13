@@ -20,9 +20,7 @@ public interface EntidadLogicaJugador extends EntidadLogica {
 	public void setAire(boolean b);
 	public void setSaltar(boolean b);
 	public int getPuntaje();
-	public boolean atacar(Enemigo enemigo);
-	public boolean atacar(Spiny spiny);
-	public boolean atacar(PiranhaPlant piranhaPlant);
+	public void atacar(Enemigo enemigo);
 	public void crearBolaDeFuego();
 	public int getOrientacion();
 	public void setOrientacion(int orientacion);

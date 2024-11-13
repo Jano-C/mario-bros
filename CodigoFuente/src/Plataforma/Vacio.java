@@ -13,7 +13,7 @@ public class Vacio extends Plataforma {
 	
 	@Override
 	public void acceptMario(VisitorMario visitorMario, int lado) {
-		visitorMario.visit(this);
+		visitorMario.visit(this, lado);
 		
 	}
 
@@ -24,8 +24,8 @@ public class Vacio extends Plataforma {
 	}
 
 	@Override
-	public void acceptEnemigo(VisitorEnemigo visitorEnemigo) {
-		
+	public void acceptEnemigo(VisitorEnemigo visitorEnemigo, int lado) {
+		visitorEnemigo.visit(this,lado);
 	}
 
 }

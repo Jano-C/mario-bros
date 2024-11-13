@@ -23,7 +23,7 @@ public class PiranhaPlant extends Enemigo{
 	
 	@Override
 	public void acceptMario(VisitorMario visitorMario, int lado) {
-		visitorMario.visit(this);
+		visitorMario.visit(this, lado);
 	}
 	
 	public void atacar(Mario mario) {
@@ -68,8 +68,7 @@ public class PiranhaPlant extends Enemigo{
 
 	@Override
 	public void serAfectadoPorJugador(Mario mario) {
-		mario.setAire(false);
-		mario.saltar();
+		mario.sumarPuntaje(PUNTOS_A_SUMAR);
 	}
 	
 }

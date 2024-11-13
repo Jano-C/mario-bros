@@ -53,6 +53,9 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	protected static final int MARIO_JUMPING_RIGHT = 4;
 	protected static final int MARIO_JUMPING_LEFT = 5;
 	
+	protected long tiempoUltimaColisionConEnemigo = 0;
+	protected static final long DELAY_DE_COLISIONES = 500;
+	
 	public Mario(Sprite sprite, int x, int y, int ancho, int alto, Juego juego) {
         super(sprite,x,y,ancho,alto);
         fabricaSprites = juego.getFabricaSprites();
@@ -147,13 +150,12 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
         if(derecha) {
             this.moverseDerecha();
         }
-
+        
         if(izquierda) {
             this.moverseIzquierda();
 
         }
-
-
+        
         if (saltar) {
             this.saltar();
         }
@@ -223,18 +225,9 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
     }
 
 	@Override
-	public boolean atacar(Enemigo enemigo) {
-		return estadoActual.atacar(enemigo);
-	}
-	
-	@Override
-	public boolean atacar(Spiny spiny) {
-		return estadoActual.atacar(spiny);
-	}
-	
-	@Override
-	public boolean atacar(PiranhaPlant piranhaPlant) {
-		return estadoActual.atacar(piranhaPlant);
+	public void atacar(Enemigo enemigo) {
+		estadoActual.atacar(enemigo);
+		juego.getNivelActual().eliminarEnemigo(enemigo);
 	}
 	
 	@Override
@@ -302,11 +295,6 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
     public void caerAlVacio() {
     	juego.terminarJuego();
     }
-    
-    public boolean chocarLadrilloSolido() {
-    	return estadoActual.chocharLadrilloSolido();
-    }
-
 
 	@Override
 	public int getVidas() {
@@ -323,65 +311,26 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	@Override
 	public void visit(BloqueSolido bloqueSolido, int lado) {
 		corregirPosicion(bloqueSolido, lado);
-	    switch (lado) {
-	        case 1:
-	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 1 (derecha)
-
-	            break;
-	        case 2: 
-	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 2 (izquierda)
-	            break;
-	        case 3:
-	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 3 (arriba)
-	        	velocidadSalto = 0;
-
-	            break;
-	        case 4: 
-	        	//Que pasa cuando mario colisiona con bloqueSolido por lado 4 (abajo)
-	            break;
-	    }
 	}
 
 
 	@Override
 	public void visit(BloqueDePreguntas bloqueDePreguntas, int lado) {
-		corregirPosicion(bloqueDePreguntas, lado);
-	    switch (lado) {
-	        case 1:
-	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 1
-	            break;
-	        case 2: 
-	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 2 (izquierda)
-	            break;
-	        case 3:
-	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 3 (arriba)
-	        	bloqueDePreguntas.mostrarPowerUp(juego);
-	            break;
-	        case 4: 
-	        	//Que pasa cuando mario colisiona con bloqueDePreguntas por lado 4 (abajo)
-	            break;
-	    }
 		
+		corregirPosicion(bloqueDePreguntas, lado);
+	    if(lado == 3) { //Colisiona por abajo
+	    	bloqueDePreguntas.mostrarPowerUp(juego);
+	    	
+	    }
 	}
 
 
 	@Override
 	public void visit(LadrilloSolido ladrilloSolido, int lado) {
+		
 		corregirPosicion(ladrilloSolido, lado);
-	    switch (lado) {
-	        case 1:
-	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 1 (derecha)
-	            break;
-	        case 2: 
-	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 2 (izquierda)
-	            break;
-	        case 3:
-	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 3 (arriba)
-	            break;
-	        case 4: 
-	        	//Que pasa cuando mario colisiona con ladrilloSolido por lado 4 (abajo)
-	        	
-	            break;
+	    if(lado == 3) { //Colisiona por abajo
+	    	estadoActual.chocharLadrilloSolido(ladrilloSolido);
 	    }
 		
 	}
@@ -389,210 +338,175 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 
 	@Override
 	public void visit(Tuberia tuberia, int lado) {
-	    switch (lado) {
-	        case 1:
-	        	//Que pasa cuando mario colisiona con tuberia por lado 1 (derecha)
-	            break;
-	        case 2: 
-	        	//Que pasa cuando mario colisiona con tuberia por lado 2 (izquierda)
-	            break;
-	        case 3:
-	        	//Que pasa cuando mario colisiona con tuberia por lado 3 (arriba)
-	            break;
-	        case 4: 
-	        	//Que pasa cuando mario colisiona con tuberia por lado 4 (abajo)
-	        	
-	            break;
+		
+		corregirPosicion(tuberia, lado);
+	}
+
+
+	@Override
+	public void visit(Vacio vacio, int lado) {
+		
+	    if(lado == 3) { 
+	    	caerAlVacio();
 	    }
 		
 	}
 
 
 	@Override
-	public void visit(Vacio vacio, int lado) {
-		switch (lado) {
-        case 1:
-        	//Que pasa cuando mario colisiona con vacio por lado 1 (derecha)
-            break;
-        case 2: 
-        	//Que pasa cuando mario colisiona con vacio por lado 2 (izquierda)
-            break;
-        case 3:
-        	//Que pasa cuando mario colisiona con vacio por lado 3 (arriba)
-            break;
-        case 4: 
-        	//Que pasa cuando mario colisiona con vacio por lado 4 (abajo)
-        	
-            break;
-    }
-		
-	}
-
-
-	@Override
 	public void visit(BuzzyBeetle buzzyBeetle, int lado) {
-		switch (lado) {
-        case 1:
-        	//Que pasa cuando mario colisiona con buzzyBeetle por lado 1 (derecha)
-            break;
-        case 2: 
-        	//Que pasa cuando mario colisiona con buzzyBeetle por lado 2 (izquierda)
-            break;
-        case 3:
-        	//Que pasa cuando mario colisiona con buzzyBeetle por lado 3 (arriba)
-            break;
-        case 4: 
-        	//Que pasa cuando mario colisiona con buzzyBeetle por lado 4 (abajo)
-        	
-            break;
-    }
+		
+		long tiempoActual = System.currentTimeMillis();
+		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
+			
+			if(lado == 4) {
+				this.atacar(buzzyBeetle);
+			}else {
+				buzzyBeetle.atacar(this);
+			}
+			
+		}
+
 		
 	}
 
 
 	@Override
 	public void visit(Goomba gommba, int lado) {
-		switch (lado) {
-        case 1:
-        	//Que pasa cuando mario colisiona con gommba por lado 1 (derecha)
-            break;
-        case 2: 
-        	//Que pasa cuando mario colisiona con gommba por lado 2 (izquierda)
-            break;
-        case 3:
-        	//Que pasa cuando mario colisiona con gommba por lado 3 (arriba)
-            break;
-        case 4: 
-        	//Que pasa cuando mario colisiona con gommba por lado 4 (abajo)
-        	
-            break;
-    }
+		
+		long tiempoActual = System.currentTimeMillis();
+		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
+			
+			if(lado == 4) {
+				this.atacar(gommba);
+			}else {
+				gommba.atacar(this);
+			}
+			
+		}
 		
 	}
 
 
 	@Override
 	public void visit(KoopaTroopa koopaTroopa, int lado) {
-		switch (lado) {
-        case 1:
-        	//Que pasa cuando mario colisiona con koopaTroopa por lado 1 (derecha)
-            break;
-        case 2: 
-        	//Que pasa cuando mario colisiona con koopaTroopa por lado 2 (izquierda)
-            break;
-        case 3:
-        	//Que pasa cuando mario colisiona con koopaTroopa por lado 3 (arriba)
-            break;
-        case 4: 
-        	//Que pasa cuando mario colisiona con koopaTroopa por lado 4 (abajo)
-        	
-            break;
-    }
+		
+		long tiempoActual = System.currentTimeMillis();
+		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
+			
+			if(lado == 4) {
+				this.atacar(koopaTroopa);
+			}else {
+				koopaTroopa.atacar(this);
+			}
+			
+		}
 		
 	}
 
 
 	@Override
 	public void visit(Lakitu lakitu, int lado) {
-		switch (lado) {
-        case 1:
-        	//Que pasa cuando mario colisiona con lakitu por lado 1 (derecha)
-            break;
-        case 2: 
-        	//Que pasa cuando mario colisiona con lakitu por lado 2 (izquierda)
-            break;
-        case 3:
-        	//Que pasa cuando mario colisiona con lakitu por lado 3 (arriba)
-            break;
-        case 4: 
-        	//Que pasa cuando mario colisiona con lakitu por lado 4 (abajo)
-        	
-            break;
-    }
+		
+		long tiempoActual = System.currentTimeMillis();
+		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
+			
+			if(lado == 4) {
+				this.atacar(lakitu);
+			}else {
+				lakitu.atacar(this);
+			}
+			
+		}
 		
 	}
 
 
 	@Override
 	public void visit(PiranhaPlant piranhaPlant, int lado) {
-		switch (lado) {
-        case 1:
-        	//Que pasa cuando mario colisiona con piranhaPlant por lado 1 (derecha)
-            break;
-        case 2: 
-        	//Que pasa cuando mario colisiona con piranhaPlant por lado 2 (izquierda)
-            break;
-        case 3:
-        	//Que pasa cuando mario colisiona con piranhaPlant por lado 3 (arriba)
-            break;
-        case 4: 
-        	//Que pasa cuando mario colisiona con piranhaPlant por lado 4 (abajo)
-        	
-            break;
-    }
+		
+		long tiempoActual = System.currentTimeMillis();
+		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
+			
+			estadoActual.chocarPiranhaPlant(piranhaPlant);
+			
+		}
+
 		
 	}
 
 
 	@Override
 	public void visit(Spiny spiny, int lado) {
-		switch (lado) {
-        case 1:
-        	//Que pasa cuando mario colisiona con spiny por lado 1 (derecha)
-            break;
-        case 2: 
-        	//Que pasa cuando mario colisiona con spiny por lado 2 (izquierda)
-            break;
-        case 3:
-        	//Que pasa cuando mario colisiona con spiny por lado 3 (arriba)
-            break;
-        case 4: 
-        	//Que pasa cuando mario colisiona con spiny por lado 4 (abajo)
-        	
-            break;
-    }
 		
+		long tiempoActual = System.currentTimeMillis();
+		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
+			
+			estadoActual.chocarSpiny(spiny);
+			
+		}
 	}
 
 
 	@Override
 	public void visit(ChampinionVerde champinionVerde) {
-		// TODO Auto-generated method stub
 		
+		ocultarImagen(champinionVerde);
+		estadoActual.serAfectadoPorPowerUp(champinionVerde);
+		juego.getNivelActual().eliminarPowerUp(champinionVerde);
 	}
 
 
 	@Override
 	public void visit(Estrella estrella) {
-		// TODO Auto-generated method stub
+		
+		ocultarImagen(estrella);
+		estadoActual.serAfectadoPorPowerUp(estrella);
+		juego.getNivelActual().eliminarPowerUp(estrella);
 		
 	}
 
 
 	@Override
 	public void visit(FlorDeFuego florDeFuego) {
-		// TODO Auto-generated method stub
+		
+		ocultarImagen(florDeFuego);
+		estadoActual.serAfectadoPorPowerUp(florDeFuego);
+		juego.getNivelActual().eliminarPowerUp(florDeFuego);
 		
 	}
 
 
 	@Override
 	public void visit(Moneda moneda) {
-		// TODO Auto-generated method stub
+		
+		ocultarImagen(moneda);
+		estadoActual.serAfectadoPorPowerUp(moneda);
+		juego.getNivelActual().eliminarPowerUp(moneda);
 		
 	}
 
 
 	@Override
 	public void visit(SuperChampinion superChampinion) {
-		// TODO Auto-generated method stub
+		
+		ocultarImagen(superChampinion);
+		estadoActual.serAfectadoPorPowerUp(superChampinion);
+		juego.getNivelActual().eliminarPowerUp(superChampinion);
 		
 	}
 
 
 	@Override
 	public void visit(Llegada llegada) {
-		// TODO Auto-generated method stub
+		
+		int numeroProximoNivel = juego.getNivelActual().getNumero() + 1;
+		juego.reproducirSonidoNivelTerminado();
+		if(numeroProximoNivel == 4) {
+			juego.ganarJuego();
+		}else {
+			juego.cambiarNivel(numeroProximoNivel);
+		}
 		
 	}
 	
@@ -605,6 +519,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
             corregirPosicionEnColisionPorIzquierda(entidadLogica);
             break;
         case 3:
+            velocidadSalto = 0;
         	corregirPosicionEnColisionPorAbajo(entidadLogica);
             break;
         case 4: 
@@ -616,11 +531,11 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	}
 	
 	private void corregirPosicionEnColisionPorEncima(EntidadLogica entidadColisionada) {
-		this.setY(entidadColisionada.getY() - entidadColisionada.getAlto());
+		this.setY(entidadColisionada.getY() - this.getAlto());
 	}
 	
 	private void corregirPosicionEnColisionPorIzquierda(EntidadLogica entidadColisionada) {
-		this.setX(entidadColisionada.getX() + entidadColisionada.getAncho());
+		this.setX(entidadColisionada.getX() + this.getAncho());
 	}
 	
 	private void corregirPosicionEnColisionPorDerecha(EntidadLogica entidadColisionada) {
@@ -628,8 +543,11 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	}
 	
 	private void corregirPosicionEnColisionPorAbajo(EntidadLogica entidadColisionada) {
-		this.setY(entidadColisionada.getY()  + entidadColisionada.getAlto());
+		this.setY(entidadColisionada.getY()  + this.getAlto() + 9);
 	}
 	
-
+	private void ocultarImagen(EntidadLogica entidadLogica) {
+		entidadLogica.setSprite(fabricaSprites.getVacio());
+		entidadLogica.notificarObserver();
+	}
 }

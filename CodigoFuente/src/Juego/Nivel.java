@@ -63,6 +63,14 @@ public class Nivel {
 		this.listaEnemigos.remove(enemigo);
 	}
 	
+	public void eliminarPlataforma(Plataforma plataforma) {
+		this.listaPlataformas.remove(plataforma);
+	}
+	
+	public void eliminarPowerUp(PowerUp powerUp) {
+		this.listaPowerUps.remove(powerUp);
+	}
+	
 	public void agregarJugador(Mario mario) {
 		this.mario = mario;
 	}

@@ -25,7 +25,7 @@ public class BuzzyBeetle extends Enemigo{
 	
 	@Override
 	public void acceptMario(VisitorMario visitorMario, int lado) {
-		visitorMario.visit(this);
+		visitorMario.visit(this, lado);
 	}
 
 	public void serAfectadoPorJugador(Mario mario) {

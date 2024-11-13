@@ -29,14 +29,9 @@ public class ManagerMovimientoEnemigos extends Thread {
         while (running) {
             long startTime = System.currentTimeMillis();
 
-//            managerColisionesEnemigo.actualizarLista(juego.getNivelActual().getEnemigos());
-
+            juego.detectarColisionesEnemigosYManejar();
             for (Enemigo enemigo : juego.getNivelActual().getEnemigos()) {
                 enemigo.actualizarPosicion();
-            }
-
-            for (Plataforma plataforma : juego.getNivelActual().getPlataformas()) {
-//                plataforma.acceptEnemigo(managerColisionesEnemigo);
             }
 
             long currentMillis = System.currentTimeMillis();

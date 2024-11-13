@@ -6,6 +6,7 @@ import Enemigo.PiranhaPlant;
 import Enemigo.Spiny;
 import Fabricas.FabricaSprites;
 import Fabricas.Sprite;
+import Plataforma.LadrilloSolido;
 import Powerups.PowerUp;
 import java.util.*;
 
@@ -74,20 +75,21 @@ public class MarioInvencible implements EstadoMario {
 		return mario;
 	}
 	@Override
-	public boolean atacar(Enemigo enemigo) {
+	public void atacar(Enemigo enemigo) {
 		enemigo.serAfectadoPorJugador(mario);
-		return false;
 	}
 	
 	@Override
-	public boolean atacar(Spiny spiny) {
+	public void chocarSpiny(Spiny spiny) {
 		spiny.serAfectadoPorJugador(mario);
-		return true;
+		mario.getJuego().getNivelActual().eliminarEnemigo(spiny);
+		//AgregarSonido
 	}
 	
 	@Override
-	public boolean atacar(PiranhaPlant piranhaPlant) {
-		return true;
+	public void chocarPiranhaPlant(PiranhaPlant piranhaPlant) {
+		piranhaPlant.serAfectadoPorJugador(mario);
+		mario.getJuego().getNivelActual().eliminarEnemigo(piranhaPlant);
 	}
 
 	@Override
@@ -121,8 +123,8 @@ public class MarioInvencible implements EstadoMario {
 	}
 
 	@Override
-	public boolean chocharLadrilloSolido() {
-		return false;
+	public void chocharLadrilloSolido(LadrilloSolido ladrilloSolido) {
+		//Mario no debe hacer nada
 	}
 
 	@Override

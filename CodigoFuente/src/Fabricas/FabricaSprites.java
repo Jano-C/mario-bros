@@ -8,6 +8,10 @@ public abstract class FabricaSprites {
 		this.rutaACarpeta = rutaACarpeta;
 	}
 	
+	public Sprite getBloqueDePreguntasVacio() {
+		return new Sprite(rutaACarpeta + "bloqueDePreguntasVacio.png");
+	}
+	
 	public Sprite getLlegada() {
 		return new Sprite(rutaACarpeta + "llegada.png");
 	}

@@ -29,12 +29,13 @@ public class BloqueDePreguntas extends Plataforma{
 	}
 	
     public void mostrarPowerUp(Juego juego) {
-        tienePowerUp = false;
+        
         PowerUp powerUp;
         Random random = new Random();
         int powerUpTipo = random.nextInt(5) + 1;
         
-        switch (powerUpTipo) {
+        if(tienePowerUp) {
+        	switch (powerUpTipo) {
             case 1:
             	powerUp = new Estrella(fabricaSprites.getEstrella(), posicion.getX(),
                                     posicion.getY() - ConstantesAuxiliares.TAMANOBLOQUE_ALTO,
@@ -69,18 +70,20 @@ public class BloqueDePreguntas extends Plataforma{
             default:
             	powerUp = null;
                 break;
+        	}
+        	
+        	this.setSprite(fabricaSprites.getBloqueDePreguntasVacio());
+        	this.notificarObserver();
+        	
+        	juego.getNivelActual().agregarPowerUp(powerUp);
+            juego.registrarObserverEntidad(powerUp);
+            tienePowerUp = false;
         }
-        //Cambiar el sprite del bloque de preguntas al bloque de preguntas vacio.
-        juego.getNivelActual().agregarPowerUp(powerUp);
-        juego.registrarObserverEntidad(powerUp);
+        
+        
+        
     }
 	
-	
-	
-	public boolean getTienePowerUp() {
-		return tienePowerUp;
-	}
-
 	@Override
 	public void acceptMario(VisitorMario visitorMario, int lado) {
 		visitorMario.visit(this, lado);
@@ -94,8 +97,8 @@ public class BloqueDePreguntas extends Plataforma{
 	}
 
 	@Override
-	public void acceptEnemigo(VisitorEnemigo visitorEnemigo) {
-		visitorEnemigo.visit(this);
+	public void acceptEnemigo(VisitorEnemigo visitorEnemigo, int lado) {
+		visitorEnemigo.visit(this, lado);
 		
 	};
 	

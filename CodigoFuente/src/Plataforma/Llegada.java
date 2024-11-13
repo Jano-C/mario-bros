@@ -17,8 +17,8 @@ public class Llegada extends Plataforma{
 	}
 
 	@Override
-	public void acceptEnemigo(VisitorEnemigo visitorEnemigo) {
-		
+	public void acceptEnemigo(VisitorEnemigo visitorEnemigo, int lado) {
+		visitorEnemigo.visit(this, lado);
 	}
 
 	@Override

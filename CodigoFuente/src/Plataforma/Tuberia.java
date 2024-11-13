@@ -13,7 +13,7 @@ public class Tuberia extends Plataforma {
 	
 	@Override
 	public void acceptMario(VisitorMario visitorMario, int lado) {
-		visitorMario.visit(this);
+		visitorMario.visit(this, lado);
 	}
 
 	@Override
@@ -22,8 +22,8 @@ public class Tuberia extends Plataforma {
 	}
 
 	@Override
-	public void acceptEnemigo(VisitorEnemigo visitorEnemigo) {
-		visitorEnemigo.visit(this);
+	public void acceptEnemigo(VisitorEnemigo visitorEnemigo, int lado) {
+		visitorEnemigo.visit(this, lado);
 		
 	};
 }
