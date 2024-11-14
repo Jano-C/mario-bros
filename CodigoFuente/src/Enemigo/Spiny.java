@@ -7,6 +7,9 @@ import Visitor.VisitorMario;
 
 public class Spiny extends Enemigo {
 	
+	private static final int PUNTOS_A_SUMAR = 60;
+	private static final int PUNTOS_A_RESTAR = 30;
+	
 	protected Sprite izquierda, derecha;
 
 	public Spiny(Sprite sprite,Sprite derecha, Sprite izquierda,  int x, int y, int ancho, int alto) {
@@ -14,7 +17,7 @@ public class Spiny extends Enemigo {
 	}
 	
 	public void atacar(Mario mario) {
-		mario.recibirGolpe(30);
+		mario.recibirGolpe(PUNTOS_A_RESTAR);
 		mario.setAire(false);
 		mario.saltar();
 		
@@ -35,13 +38,13 @@ public class Spiny extends Enemigo {
 	
 	@Override
 	public void serAfectadoPorBolaDeFuego(Mario mario) {
-		mario.sumarPuntaje(60);
+		mario.sumarPuntaje(PUNTOS_A_SUMAR);
 		
 	}
 
 	@Override
 	public void serAfectadoPorJugador(Mario mario) {
-		mario.sumarPuntaje(60);
+		mario.sumarPuntaje(PUNTOS_A_SUMAR);
 		mario.setAire(false);
 		mario.saltar();	
 	}

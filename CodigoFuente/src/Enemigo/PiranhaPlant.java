@@ -7,6 +7,10 @@ import Visitor.VisitorBolaDeFuego;
 import Visitor.VisitorMario;
 
 public class PiranhaPlant extends Enemigo{
+	
+	private static final int PUNTOS_A_SUMAR = 30;
+	private static final int PUNTOS_A_RESTAR = 30;
+	
 	protected boolean subiendo;
 	protected int minimoYPosible;
 	protected int maximoYPosible;
@@ -28,7 +32,7 @@ public class PiranhaPlant extends Enemigo{
 	}
 	
 	public void atacar(Mario mario) {
-		mario.recibirGolpe(30);
+		mario.recibirGolpe(PUNTOS_A_RESTAR);
 		mario.setAire(false);
 		mario.saltar();
 	}
@@ -56,7 +60,7 @@ public class PiranhaPlant extends Enemigo{
 	
 	@Override
 	public void serAfectadoPorBolaDeFuego(Mario mario) {
-		mario.sumarPuntaje(30);
+		mario.sumarPuntaje(PUNTOS_A_SUMAR);
 		
 	}
 	
@@ -74,7 +78,7 @@ public class PiranhaPlant extends Enemigo{
 
 	@Override
 	public void serAfectadoPorJugador(Mario mario) {
-		mario.sumarPuntaje(30);
+		mario.sumarPuntaje(PUNTOS_A_SUMAR);
 	}
 	
 }

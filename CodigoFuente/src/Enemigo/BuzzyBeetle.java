@@ -8,6 +8,8 @@ import Visitor.VisitorMario;
 public class BuzzyBeetle extends Enemigo{
 
 
+	private static final int PUNTOS_A_SUMAR = 30;
+	private static final int PUNTOS_A_RESTAR = 15;
 	
 	protected Sprite izquierda, derecha;
 	
@@ -17,7 +19,7 @@ public class BuzzyBeetle extends Enemigo{
 	}
 	
 	public void atacar(Mario mario) {
-		mario.recibirGolpe(15);
+		mario.recibirGolpe(PUNTOS_A_RESTAR);
 		mario.setAire(false);
 		mario.saltar();
 	}
@@ -29,7 +31,7 @@ public class BuzzyBeetle extends Enemigo{
 	}
 
 	public void serAfectadoPorJugador(Mario mario) {
-		mario.sumarPuntaje(30);
+		mario.sumarPuntaje(PUNTOS_A_SUMAR);
 		mario.setAire(false);
 		mario.saltar();
 	}
@@ -42,7 +44,7 @@ public class BuzzyBeetle extends Enemigo{
 
 	@Override
 	public void serAfectadoPorBolaDeFuego(Mario mario) {
-		mario.sumarPuntaje(30);
+		mario.sumarPuntaje(PUNTOS_A_SUMAR);
 	}
 	
 }

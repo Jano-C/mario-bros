@@ -7,6 +7,9 @@ import Visitor.VisitorMario;
 
 public class KoopaTroopa extends Enemigo {
 	
+	private static final int PUNTOS_A_SUMAR = 90;
+	private static final int PUNTOS_A_RESTAR = 45;
+	
 	protected int vidas;
 
 	public KoopaTroopa(Sprite sprite,Sprite derecha, Sprite izquierda, int x, int y, int ancho, int alto) {
@@ -27,7 +30,7 @@ public class KoopaTroopa extends Enemigo {
 	}
 	
 	public void atacar(Mario mario) {
-		mario.recibirGolpe(45);
+		mario.recibirGolpe(PUNTOS_A_RESTAR);
 		mario.setAire(false);
 		mario.saltar();
 	}
@@ -35,7 +38,7 @@ public class KoopaTroopa extends Enemigo {
 	public void serAfectadoPorJugador(Mario mario) {
 		vidas--;
 		if(vidas == 0) {
-			mario.sumarPuntaje(90);
+			mario.sumarPuntaje(PUNTOS_A_SUMAR);
 		}
 		mario.setAire(false);
 		mario.saltar();
@@ -43,7 +46,7 @@ public class KoopaTroopa extends Enemigo {
 	
 	@Override
 	public void serAfectadoPorBolaDeFuego(Mario mario) {
-		mario.sumarPuntaje(90);
+		mario.sumarPuntaje(PUNTOS_A_SUMAR);
 		
 	}
 
