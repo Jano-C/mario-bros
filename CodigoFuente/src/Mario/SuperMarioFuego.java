@@ -27,7 +27,7 @@ public class SuperMarioFuego extends SuperMario{
     }
     
 	@Override
-	public void chocharLadrilloSolido(LadrilloSolido ladrilloSolido) {
+	public void chocarLadrilloSolido(LadrilloSolido ladrilloSolido) {
 
 	}
 

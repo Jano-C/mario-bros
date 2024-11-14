@@ -6,26 +6,31 @@ import Fabricas.Sprite;
 public class DetectorColisiones {
 	
 	protected int mejora = 8;
-	
+	public static final int NINGUNO=0;
+	public static final int DERECHA_1=1;
+	public static final int IZQUIERDA_2=2;
+	public static final int ARRIBA_3=3;
+	public static final int ABAJO_4=4;
+
 	public int colisionaCon(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
 		
-		int ladoColision = 0;
+		int ladoColision = NINGUNO;
 		
 		if(colisionaConEntidadDerecha(entidadLogica,entidadColisionada)) {
 			
-			ladoColision = 1;
+			ladoColision = DERECHA_1;
 		}
 		if(colisionaConEntidadAbajo(entidadLogica,entidadColisionada)) {
 			
-			ladoColision = 4;
+			ladoColision = ABAJO_4;
 		}
 		if(colisionaConEntidadArriba(entidadLogica,entidadColisionada)) {
 			
-			ladoColision = 3;
+			ladoColision = ARRIBA_3;
 		}
 		if(colisionaConEntidadIzquierda(entidadLogica,entidadColisionada)) {
 			
-			ladoColision = 2;
+			ladoColision = IZQUIERDA_2;
 		}
 		
 		return ladoColision;

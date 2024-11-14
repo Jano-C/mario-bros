@@ -1,6 +1,7 @@
 package Enemigo;
 
 import Auxiliares.ConstantesAuxiliares;
+import Auxiliares.DetectorColisiones;
 import Entidades.EntidadDinamica;
 import Entidades.EntidadLogica;
 import Fabricas.Sprite;
@@ -99,7 +100,7 @@ public abstract class Enemigo extends EntidadDinamica implements Visitable, Visi
 	@Override
 	public void visit(Vacio vacio, int lado) {
 		
-	    if(lado == 4) {
+	    if(lado == DetectorColisiones.ABAJO_4) {
 	    	cambiarDireccion();
             cambiarSpriteEnColision();
 	    }
@@ -107,18 +108,18 @@ public abstract class Enemigo extends EntidadDinamica implements Visitable, Visi
 	
 	private void revisarColision(EntidadLogica entidadLogica, int lado) {
 	    switch (lado) {
-        case 1:
+        case DetectorColisiones.DERECHA_1:
             movingRight = false;
             cambiarSpriteEnColision();
             break;
-        case 2: 
+        case DetectorColisiones.IZQUIERDA_2: 
         	 movingRight = true;
         	 cambiarSpriteEnColision();
             break;
-        case 3:
+        case DetectorColisiones.ARRIBA_3:
 
             break;
-        case 4: 
+        case DetectorColisiones.ABAJO_4: 
         	corregirPosicionEnColisionPorEncima(entidadLogica);
             enAire = false;
             break;

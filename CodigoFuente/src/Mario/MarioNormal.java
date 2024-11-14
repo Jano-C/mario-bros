@@ -1,6 +1,7 @@
 package Mario;
 
 import Auxiliares.ConstantesAuxiliares;
+import Auxiliares.DetectorColisiones;
 import Enemigo.BuzzyBeetle;
 import Enemigo.Enemigo;
 import Enemigo.Goomba;
@@ -105,7 +106,7 @@ public class MarioNormal implements EstadoMario{
 	}
 
 	@Override
-	public void chocharLadrilloSolido(LadrilloSolido ladrilloSolido) {
+	public void chocarLadrilloSolido(LadrilloSolido ladrilloSolido) {
 		
 	}
 
@@ -128,7 +129,7 @@ public class MarioNormal implements EstadoMario{
 	@Override
 	public void colisionaConLakitu(Lakitu lakitu, int lado) {
 		
-		if(lado == 4) {
+		if(lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(lakitu);
 			mario.getJuego().getNivelActual().eliminarEnemigo(lakitu);
 			
@@ -148,7 +149,7 @@ public class MarioNormal implements EstadoMario{
 	@Override
 	public void colisionaConBuzzyBeetle(BuzzyBeetle buzzyBeetle, int lado) {
 		
-		if(lado == 4) {
+		if(lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(buzzyBeetle);
 			mario.getJuego().getNivelActual().eliminarEnemigo(buzzyBeetle);
 			
@@ -168,7 +169,7 @@ public class MarioNormal implements EstadoMario{
 	@Override
 	public void colisionaConGoomba(Goomba goomba, int lado) {
 		
-		if(lado == 4) {
+		if(lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(goomba);
 			mario.getJuego().getNivelActual().eliminarEnemigo(goomba);
 
@@ -181,7 +182,7 @@ public class MarioNormal implements EstadoMario{
 	@Override
 	public void colisionaConKoopaTroopa(KoopaTroopa koopaTroopa, int lado) {
 		
-		if(lado == 4) {
+		if(lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(koopaTroopa);
 			mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
 

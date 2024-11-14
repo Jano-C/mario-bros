@@ -1,6 +1,7 @@
 package Mario;
 
 import Auxiliares.ConstantesAuxiliares;
+import Auxiliares.DetectorColisiones;
 import Enemigo.BuzzyBeetle;
 import Enemigo.Enemigo;
 import Enemigo.Goomba;
@@ -317,7 +318,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	public void visit(BloqueDePreguntas bloqueDePreguntas, int lado) {
 		
 		corregirPosicion(bloqueDePreguntas, lado);
-	    if(lado == 3) { //Colisiona por abajo
+	    if(lado == DetectorColisiones.ARRIBA_3) { //Colisiona por abajo
 	    	bloqueDePreguntas.mostrarPowerUp(juego);
 	    	
 	    }
@@ -328,7 +329,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	public void visit(LadrilloSolido ladrilloSolido, int lado) {
 		
 		corregirPosicion(ladrilloSolido, lado);
-	    if(lado == 3) { //Colisiona por abajo
+	    if(lado == DetectorColisiones.ARRIBA_3) { //Colisiona por abajo
 	    	estadoActual.chocharLadrilloSolido(ladrilloSolido);
 	    }
 		
@@ -345,7 +346,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	@Override
 	public void visit(Vacio vacio, int lado) {
 		
-	    if(lado == 3) { 
+	    if(lado == DetectorColisiones.ARRIBA_3) { 
 	    	caerAlVacio();
 	    }
 		
@@ -493,17 +494,17 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	
 	private void corregirPosicion(EntidadLogica entidadLogica, int lado) {
 	    switch (lado) {
-        case 1:
+        case DetectorColisiones.DERECHA_1:
             corregirPosicionEnColisionPorDerecha(entidadLogica);
             break;
-        case 2: 
+        case DetectorColisiones.IZQUIERDA_2: 
             corregirPosicionEnColisionPorIzquierda(entidadLogica);
             break;
-        case 3:
+        case DetectorColisiones.ARRIBA_3:
             velocidadSalto = 0;
         	corregirPosicionEnColisionPorAbajo(entidadLogica);
             break;
-        case 4: 
+        case DetectorColisiones.ABAJO_4: 
             corregirPosicionEnColisionPorEncima(entidadLogica);
         	velocidadSalto = 0;
             enAire = false;

@@ -25,7 +25,7 @@ public interface EstadoMario {
     public Sprite getSpriteIdeIzquierda();
     public Sprite getSpriteSaltandoIzquierda();
     public Sprite getSpriteSaltandoDerecha();
-    public void chocharLadrilloSolido(LadrilloSolido ladrilloSolido);
+    public void chocarLadrilloSolido(LadrilloSolido ladrilloSolido);
     public void crearBolaDeFuego();
     public EstadoMario getEstadoAnterior();
     public int getAlto();

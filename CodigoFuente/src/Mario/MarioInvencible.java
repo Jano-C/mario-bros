@@ -110,7 +110,7 @@ public class MarioInvencible implements EstadoMario {
 	}
 
 	@Override
-	public void chocharLadrilloSolido(LadrilloSolido ladrilloSolido) {
+	public void chocarLadrilloSolido(LadrilloSolido ladrilloSolido) {
 		//Mario no debe hacer nada
 	}
 
