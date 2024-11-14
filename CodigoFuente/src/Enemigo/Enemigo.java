@@ -25,6 +25,7 @@ public abstract class Enemigo extends EntidadDinamica implements Visitable, Visi
 	protected int ultimaPos;
 	
 	public Enemigo(Sprite sprite,Sprite derecha, Sprite izquierda, int x, int y, int ancho, int alto) {
+		
 		super(sprite,x,y,ancho,alto);
 		this.izquierda = izquierda;
 		this.derecha = derecha;
@@ -33,7 +34,9 @@ public abstract class Enemigo extends EntidadDinamica implements Visitable, Visi
 		ultimaPos = x;
         enAire = true;
         gravedad = 1;
+        
 	}
+	
 	
 	public void actualizarPosicion() {
 		
@@ -95,7 +98,7 @@ public abstract class Enemigo extends EntidadDinamica implements Visitable, Visi
 	
 	@Override
 	public void visit(Vacio vacio, int lado) {
-		System.out.println("Colisiona con vacio.");
+		
 	    if(lado == 4) {
 	    	cambiarDireccion();
             cambiarSpriteEnColision();
@@ -135,15 +138,21 @@ public abstract class Enemigo extends EntidadDinamica implements Visitable, Visi
     }
 	
 	private void cambiarDireccion() {
+		
 		if(movingRight == true) {
 			movingRight = false;
 		}else if(movingRight == false) {
 			movingRight = true;
 		}
+		
 	}
 	
 	private void corregirPosicionEnColisionPorEncima(EntidadLogica entidadColisionada) {
 		this.setY(entidadColisionada.getY() - this.getAlto());
+	}
+	
+	protected void morir() {
+		observer.notificarMuerte();
 	}
 
 	public abstract void serAfectadoPorBolaDeFuego(Mario mario);

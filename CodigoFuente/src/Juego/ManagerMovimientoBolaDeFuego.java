@@ -56,7 +56,6 @@ public class ManagerMovimientoBolaDeFuego extends Thread {
 	@Override
     public void interrupt() {
         running = false;
-        super.interrupt();
     }
 	
 }

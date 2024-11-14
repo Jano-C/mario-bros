@@ -19,6 +19,7 @@ public class ObserverJugador extends ObserverGrafico{
 		actualizarImagen();
 		
 	}
+	
     @Override
     public void actualizar() {
         if (lastSprite != entidadLogicaJugador.getSpriteActual()) {
@@ -29,9 +30,16 @@ public class ObserverJugador extends ObserverGrafico{
         panelPantallaJuego.actualizarScrollHaciaJugador(entidadLogicaJugador);
         panelPantallaJuego.actualizarLabelsInformacion(entidadLogicaJugador);
     }
+    
 	@Override
 	public void actualizarSoloImagen() {
 		this.actualizarImagen();
+		
+	}
+	
+	@Override
+	public void notificarMuerte() {
+		panelPantallaJuego.eliminarEntidad(this);
 		
 	}
 }

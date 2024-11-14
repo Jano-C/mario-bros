@@ -26,16 +26,18 @@ public class PanelPantallaJuego  extends JPanel{
 	protected EntidadLogicaJugador entidadJugador;
 	protected JLabel imagenFondoPanelMapa;
 	protected JLabel imagenFondoPanelInformacion;
+	protected ControladorVistas controladorVistas;
 	protected JLabel labelPuntaje;
 	private int posicionPreviaX = -1;
 	protected String rutaAFondo;
 	
-	public PanelPantallaJuego() {
+	public PanelPantallaJuego(ControladorVistas controladorVistas) {
 		
 		setPreferredSize(new Dimension(ConstantesVentana.PANEL_JUEGO_ANCHO, ConstantesVentana.PANEL_JUEGO_ALTO));
 		setLayout(new BorderLayout());
 		agregarPanelInformacion();
 		agregarPanelMapaConFondoYScroll();
+		this.controladorVistas = controladorVistas;
 		rutaAFondo = "";
 	}
 	
@@ -49,14 +51,19 @@ public class PanelPantallaJuego  extends JPanel{
 	}
 	
 	public Observer incorporarEntidad(EntidadLogica entidadLogica) {
-		ObserverEntidad observerEntidad = new ObserverEntidad(entidadLogica);
+		ObserverEntidad observerEntidad = new ObserverEntidad(entidadLogica, this);
 		imagenFondoPanelMapa.add(observerEntidad);
 		return observerEntidad;	
 	}
 	
+	public void eliminarEntidad(Observer observer) {
+		imagenFondoPanelMapa.remove((ObserverGrafico) observer);
+		controladorVistas.refrescar();
+	}
+	
 	
 	public Observer incorporarSilueta(EntidadLogica entidad_logica) {
-		ObserverEntidad observerEntidad = new ObserverEntidad(entidad_logica);
+		ObserverEntidad observerEntidad = new ObserverEntidad(entidad_logica, this);
 		ImageIcon icono = new ImageIcon(this.getClass().getResource("/Imagenes/fondoMapa.png"));
 		imagenFondoPanelMapa.setIcon(icono);
 		imagenFondoPanelMapa.setBounds(0,0, imagenFondoPanelMapa.getIcon().getIconWidth(), imagenFondoPanelMapa.getIcon().getIconHeight());

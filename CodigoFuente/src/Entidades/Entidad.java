@@ -1,6 +1,7 @@
 package Entidades;
 import Fabricas.Sprite;
 import Vistas.Observer;
+import Vistas.ObserverGrafico;
 import Auxiliares.Posicion;
 
 public abstract class Entidad implements EntidadLogica {
@@ -74,5 +75,8 @@ public abstract class Entidad implements EntidadLogica {
     	return spriteActual;
     }
 
+    public Observer getObserver() {
+    	return observer;
+    }
 
 }

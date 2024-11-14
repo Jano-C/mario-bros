@@ -226,8 +226,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 
 	@Override
 	public void atacar(Enemigo enemigo) {
-		estadoActual.atacar(enemigo);
-		juego.getNivelActual().eliminarEnemigo(enemigo);
+		enemigo.serAfectadoPorJugador(this);
 	}
 	
 	@Override
@@ -359,11 +358,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 		long tiempoActual = System.currentTimeMillis();
 		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
 			
-			if(lado == 4) {
-				this.atacar(buzzyBeetle);
-			}else {
-				buzzyBeetle.atacar(this);
-			}
+			estadoActual.colisionaConBuzzyBeetle(buzzyBeetle, lado);
 			
 		}
 
@@ -377,11 +372,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 		long tiempoActual = System.currentTimeMillis();
 		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
 			
-			if(lado == 4) {
-				this.atacar(gommba);
-			}else {
-				gommba.atacar(this);
-			}
+			estadoActual.colisionaConGoomba(gommba, lado);
 			
 		}
 		
@@ -394,11 +385,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 		long tiempoActual = System.currentTimeMillis();
 		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
 			
-			if(lado == 4) {
-				this.atacar(koopaTroopa);
-			}else {
-				koopaTroopa.atacar(this);
-			}
+			estadoActual.colisionaConKoopaTroopa(koopaTroopa, lado);
 			
 		}
 		
@@ -411,11 +398,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 		long tiempoActual = System.currentTimeMillis();
 		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
 			
-			if(lado == 4) {
-				this.atacar(lakitu);
-			}else {
-				lakitu.atacar(this);
-			}
+			estadoActual.colisionaConLakitu(lakitu, lado);
 			
 		}
 		
@@ -428,11 +411,9 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 		long tiempoActual = System.currentTimeMillis();
 		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
 			
-			estadoActual.chocarPiranhaPlant(piranhaPlant);
+			estadoActual.colisionaConPiranhaPlant(piranhaPlant, lado);
 			
 		}
-
-		
 	}
 
 
@@ -442,7 +423,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 		long tiempoActual = System.currentTimeMillis();
 		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
 			
-			estadoActual.chocarSpiny(spiny);
+			estadoActual.colisionaConSpiny(spiny, lado);
 			
 		}
 	}

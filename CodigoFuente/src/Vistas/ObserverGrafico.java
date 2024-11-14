@@ -43,4 +43,5 @@ public abstract class ObserverGrafico extends JLabel implements Observer {
         int alto = entidadObservada.getAlto();
         setBounds(x, y, ancho, alto);
     }
+    
 }

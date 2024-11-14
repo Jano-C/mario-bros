@@ -1,6 +1,7 @@
 package Entidades;
 
 import Fabricas.Sprite;
+import Vistas.Observer;
 
 public interface EntidadLogica {
 	
@@ -12,4 +13,5 @@ public interface EntidadLogica {
 	public void setSprite(Sprite sprite);
 	public void notificarObserver();
 	public int getSpriteActual();
+	public Observer getObserver();
 }

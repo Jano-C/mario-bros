@@ -29,9 +29,8 @@ public class Goomba extends Enemigo{
 	}
 
 	public void serAfectadoPorJugador(Mario mario) {
+		morir();
 		mario.sumarPuntaje(60);
-		mario.setAire(false);
-		mario.saltar();
 	}
 	
 	@Override

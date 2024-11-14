@@ -62,6 +62,5 @@ public class ManagerMovimientoEnemigos extends Thread {
     @Override
     public void interrupt() {
         running = false;
-        super.interrupt();
     }
 }

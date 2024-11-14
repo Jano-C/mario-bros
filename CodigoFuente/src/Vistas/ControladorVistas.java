@@ -20,7 +20,7 @@ public class ControladorVistas implements ControladorVistasInterfaz{
 	public ControladorVistas(Juego juego) {
 		this.juego = juego;
 		this.panelPantallaInicio = new PanelPantallaInicio(this);
-		this.panelPantallaJuego = new PanelPantallaJuego();
+		this.panelPantallaJuego = new PanelPantallaJuego(this);
 		this.panelPantallaRanking = new PanelPantallaRanking(this);
 		this.panelPantallaPerder = new PanelPantallaPerder(this);
 		this.panelPantallaGanar = new PanelPantallaGanar(this);
@@ -30,7 +30,7 @@ public class ControladorVistas implements ControladorVistasInterfaz{
 	
     public void reiniciarPantallaJuego(){
     	String rutaAnterior = panelPantallaJuego.getRutaFondo();
-        this.panelPantallaJuego = new PanelPantallaJuego();
+        this.panelPantallaJuego = new PanelPantallaJuego(this);
         ventana.setContentPane(panelPantallaJuego);
         panelPantallaJuego.setFondoJuego(rutaAnterior);
         refrescar();
@@ -42,6 +42,10 @@ public class ControladorVistas implements ControladorVistasInterfaz{
 		observerEntidad.actualizar();
 		refrescar();
 		return observerEntidad;
+	}
+	
+	public void eliminarEntidad(Observer observer) {
+		panelPantallaJuego.eliminarEntidad(observer);
 	}
 	public Observer registrarEntidadJugador(EntidadLogicaJugador entidadJugador) {
 	    Observer observerJugador = panelPantallaJuego.incorporarEntidadJugador(entidadJugador);
@@ -129,7 +133,7 @@ public class ControladorVistas implements ControladorVistasInterfaz{
 	public void terminarJuego() {
 		juego = new Juego();
 		juego.setControladorVistas(this);
-		this.panelPantallaJuego = new PanelPantallaJuego();
+		this.panelPantallaJuego = new PanelPantallaJuego(this);
 
 	}
 	public void guardarNombre(String nombre) {

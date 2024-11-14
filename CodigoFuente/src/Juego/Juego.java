@@ -5,6 +5,7 @@ import java.util.List;
 import Auxiliares.DetectorColisiones;
 import Enemigo.Enemigo;
 import Entidades.Entidad;
+import Entidades.EntidadLogica;
 import Fabricas.FabricaEntidades;
 import Fabricas.FabricaSonidos;
 import Fabricas.FabricaSprites;
@@ -17,6 +18,7 @@ import Ranking.Ranking;
 import Vistas.ControladorVistas;
 import Vistas.KeyHandler;
 import Vistas.Observer;
+import Vistas.ObserverGrafico;
 
 public class Juego {
 	

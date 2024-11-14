@@ -1,7 +1,11 @@
 package Mario;
 
 import Auxiliares.ConstantesAuxiliares;
+import Enemigo.BuzzyBeetle;
 import Enemigo.Enemigo;
+import Enemigo.Goomba;
+import Enemigo.KoopaTroopa;
+import Enemigo.Lakitu;
 import Enemigo.PiranhaPlant;
 import Enemigo.Spiny;
 import Fabricas.FabricaSprites;
@@ -62,7 +66,7 @@ public class MarioInvencible implements EstadoMario {
 	
 	@Override
 	public void recibirGolpe(int puntosARestar) {
-		// TODO Auto-generated method stub
+		//Mario no debe hacer nada
 		
 	}
 
@@ -73,23 +77,6 @@ public class MarioInvencible implements EstadoMario {
 	
 	public Mario getMario() {
 		return mario;
-	}
-	@Override
-	public void atacar(Enemigo enemigo) {
-		enemigo.serAfectadoPorJugador(mario);
-	}
-	
-	@Override
-	public void chocarSpiny(Spiny spiny) {
-		spiny.serAfectadoPorJugador(mario);
-		mario.getJuego().getNivelActual().eliminarEnemigo(spiny);
-		//AgregarSonido
-	}
-	
-	@Override
-	public void chocarPiranhaPlant(PiranhaPlant piranhaPlant) {
-		piranhaPlant.serAfectadoPorJugador(mario);
-		mario.getJuego().getNivelActual().eliminarEnemigo(piranhaPlant);
 	}
 
 	@Override
@@ -129,7 +116,7 @@ public class MarioInvencible implements EstadoMario {
 
 	@Override
 	public void crearBolaDeFuego() {
-		// TODO Auto-generated method stub
+		//Mario no debe hacer nada
 		
 	}
 
@@ -138,5 +125,52 @@ public class MarioInvencible implements EstadoMario {
 		return ConstantesAuxiliares.MARIOGRANDE_ALTO;
 	}
 	
+	@Override
+	public void colisionaConLakitu(Lakitu lakitu, int lado) {
+		
+		mario.atacar(lakitu);
+		mario.getJuego().getNivelActual().eliminarEnemigo(lakitu);
+		
+	}
+
+	@Override
+	public void colisionaConSpiny(Spiny spiny, int lado) {
+		
+		mario.atacar(spiny);
+		mario.getJuego().getNivelActual().eliminarEnemigo(spiny);
+		
+	}
+
+	@Override
+	public void colisionaConBuzzyBeetle(BuzzyBeetle buzzyBeetle, int lado) {
+		
+		mario.atacar(buzzyBeetle);
+		mario.getJuego().getNivelActual().eliminarEnemigo(buzzyBeetle);
+		
+	}
+
+	@Override
+	public void colisionaConPiranhaPlant(PiranhaPlant piranhaPlant, int lado) {
+		
+		mario.atacar(piranhaPlant);
+		mario.getJuego().getNivelActual().eliminarEnemigo(piranhaPlant);
+		
+	}
+
+	@Override
+	public void colisionaConGoomba(Goomba goomba, int lado) {
+		
+		mario.atacar(goomba);
+		mario.getJuego().getNivelActual().eliminarEnemigo(goomba);
+		
+	}
+
+	@Override
+	public void colisionaConKoopaTroopa(KoopaTroopa koopaTroopa, int lado) {
+		
+		mario.atacar(koopaTroopa);
+		mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
+		
+	}
 
 }

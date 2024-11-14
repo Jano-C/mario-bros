@@ -4,9 +4,12 @@ import Entidades.EntidadLogica;
 
 @SuppressWarnings("serial")
 public class ObserverEntidad extends ObserverGrafico {
+	
+	protected PanelPantallaJuego panelPantallaJuego;
 
-	public ObserverEntidad(EntidadLogica entidadObservada) {
+	public ObserverEntidad(EntidadLogica entidadObservada, PanelPantallaJuego panelPantallaJuego) {
 		super(entidadObservada);
+		this.panelPantallaJuego = panelPantallaJuego;
 		this.actualizar();
 	}
 
@@ -15,5 +18,9 @@ public class ObserverEntidad extends ObserverGrafico {
 		this.actualizarImagen();
 		
 	}
+	
+    public void notificarMuerte() {
+    	panelPantallaJuego.eliminarEntidad(this);
+    }
 
 }

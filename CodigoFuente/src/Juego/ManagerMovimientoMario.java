@@ -60,7 +60,6 @@ public class ManagerMovimientoMario extends Thread {
 		@Override
 	    public void interrupt() {
 	        running = false;
-	        super.interrupt();
 	    }
 		
 		public void marioEstaEnEstrella() {

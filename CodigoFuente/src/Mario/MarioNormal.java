@@ -1,7 +1,11 @@
 package Mario;
 
 import Auxiliares.ConstantesAuxiliares;
+import Enemigo.BuzzyBeetle;
 import Enemigo.Enemigo;
+import Enemigo.Goomba;
+import Enemigo.KoopaTroopa;
+import Enemigo.Lakitu;
 import Enemigo.PiranhaPlant;
 import Enemigo.Spiny;
 import Fabricas.FabricaSprites;
@@ -71,21 +75,6 @@ public class MarioNormal implements EstadoMario{
 	}
 
 	@Override
-	public void atacar(Enemigo enemigo) {
-		enemigo.serAfectadoPorJugador(mario);
-	}
-	
-	@Override
-	public void chocarSpiny(Spiny spiny) {
-		spiny.atacar(mario);
-	}
-	
-	@Override
-	public void chocarPiranhaPlant(PiranhaPlant piranhaPlant) {
-		piranhaPlant.atacar(mario);
-	}
-
-	@Override
 	public Sprite getSpriteMoviendoseDerecha() {
 		return marioMovingRight;
 	}
@@ -133,6 +122,74 @@ public class MarioNormal implements EstadoMario{
 	@Override
 	public int getAlto() {
 		return ConstantesAuxiliares.MARIONORMAL_ALTO;
+	}
+
+	//Testing
+	@Override
+	public void colisionaConLakitu(Lakitu lakitu, int lado) {
+		
+		if(lado == 4) {
+			mario.atacar(lakitu);
+			mario.getJuego().getNivelActual().eliminarEnemigo(lakitu);
+			
+		}else {
+			lakitu.atacar(mario);
+		}
+		
+	}
+
+	@Override
+	public void colisionaConSpiny(Spiny spiny, int lado) {
+		
+		spiny.atacar(mario);
+		
+	}
+
+	@Override
+	public void colisionaConBuzzyBeetle(BuzzyBeetle buzzyBeetle, int lado) {
+		
+		if(lado == 4) {
+			mario.atacar(buzzyBeetle);
+			mario.getJuego().getNivelActual().eliminarEnemigo(buzzyBeetle);
+			
+		}else {
+			buzzyBeetle.atacar(mario);
+		}
+		
+	}
+
+	@Override
+	public void colisionaConPiranhaPlant(PiranhaPlant piranhaPlant, int lado) {
+		
+		piranhaPlant.atacar(mario);
+		
+	}
+
+	@Override
+	public void colisionaConGoomba(Goomba goomba, int lado) {
+		
+		if(lado == 4) {
+			mario.atacar(goomba);
+			mario.getJuego().getNivelActual().eliminarEnemigo(goomba);
+
+		}else {
+			goomba.atacar(mario);
+		}
+		
+	}
+
+	@Override
+	public void colisionaConKoopaTroopa(KoopaTroopa koopaTroopa, int lado) {
+		
+		if(lado == 4) {
+			mario.atacar(koopaTroopa);
+			mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
+
+		}else {
+			koopaTroopa.atacar(mario);
+		}
+		
+		
 	}
 
 
