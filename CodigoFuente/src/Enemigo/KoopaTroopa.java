@@ -38,10 +38,9 @@ public class KoopaTroopa extends Enemigo {
 	public void serAfectadoPorJugador(Mario mario) {
 		vidas--;
 		if(vidas == 0) {
+			eliminarImagen();
 			mario.sumarPuntaje(PUNTOS_A_SUMAR);
 		}
-		mario.setAire(false);
-		mario.saltar();
 	}
 	
 	@Override

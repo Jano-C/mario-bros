@@ -24,30 +24,41 @@ public class FlorDeFuego extends PowerUp{
 
 	@Override
 	public void aplicarEfecto(MarioNormal marioNormal) {
+		
 		marioNormal.sumarPuntos(PUNTOS_MARIO_NORMAL);
 		marioNormal.setEstado(new SuperMarioFuego(marioNormal.getMario()));
 		marioNormal.getMario().getJuego().reproducirSonidoPowerUp();
+		eliminarImagen();
+		
 	}
 
 
 	@Override
 	public void aplicarEfecto(SuperMario superMario) {
+		
 		superMario.sumarPuntos(PUNTOS_SUPERMARIO);
 		superMario.setEstado(new SuperMarioFuego(superMario.getMario()));
 		superMario.getMario().getJuego().reproducirSonidoPowerUp();
+		eliminarImagen();
+		
 	}
 
 
 	@Override
 	public void aplicarEfecto(SuperMarioFuego superMarioFuego) {
+		
 		superMarioFuego.sumarPuntos(PUNTOS_SUPERMARIOFUEGO);
 		superMarioFuego.setEstado(new SuperMarioFuego(superMarioFuego.getMario()));
 		superMarioFuego.getMario().getJuego().reproducirSonidoPowerUp();
+		eliminarImagen();
 	}
 
 	@Override
 	public void aplicarEfecto(MarioInvencible marioInvencible) {
+		
 		marioInvencible.sumarPuntos(PUNTOS_MARIO_NORMAL);
+		eliminarImagen();
+		
 	}
 	
 }

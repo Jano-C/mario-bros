@@ -30,7 +30,7 @@ public class Goomba extends Enemigo{
 	}
 
 	public void serAfectadoPorJugador(Mario mario) {
-		morir();
+		eliminarImagen();
 		mario.sumarPuntaje(PUNTOS_A_SUMAR);
 	}
 	

@@ -23,20 +23,28 @@ public class Moneda extends PowerUp{
 	@Override
 	public void aplicarEfecto(MarioNormal marioNormal) {
 		marioNormal.sumarPuntos(PUNTOS_MARIO_NORMAL);
+		marioNormal.getMario().getJuego().reproducirSonidoAgarrarMoneda();
+		eliminarImagen();
 	}
 
 	@Override
 	public void aplicarEfecto(SuperMario superMario) {
 		superMario.sumarPuntos(PUNTOS_MARIO_NORMAL);
+		superMario.getMario().getJuego().reproducirSonidoAgarrarMoneda();
+		eliminarImagen();
 	}
 
 	@Override
 	public void aplicarEfecto(SuperMarioFuego superMarioFuego) {
 		superMarioFuego.sumarPuntos(PUNTOS_MARIO_NORMAL);
+		superMarioFuego.getMario().getJuego().reproducirSonidoAgarrarMoneda();
+		eliminarImagen();
 	}
 
 	@Override
 	public void aplicarEfecto(MarioInvencible marioInvencible) {
 		marioInvencible.sumarPuntos(PUNTOS_MARIO_NORMAL);
+		marioInvencible.getMario().getJuego().reproducirSonidoAgarrarMoneda();
+		eliminarImagen();
 	}
 }

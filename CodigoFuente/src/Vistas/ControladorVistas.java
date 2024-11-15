@@ -47,6 +47,7 @@ public class ControladorVistas implements ControladorVistasInterfaz{
 	public void eliminarEntidad(Observer observer) {
 		panelPantallaJuego.eliminarEntidad(observer);
 	}
+	
 	public Observer registrarEntidadJugador(EntidadLogicaJugador entidadJugador) {
 	    Observer observerJugador = panelPantallaJuego.incorporarEntidadJugador(entidadJugador);
 	    observerJugador.actualizar();

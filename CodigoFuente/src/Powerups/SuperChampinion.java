@@ -27,20 +27,24 @@ public class SuperChampinion extends PowerUp {
 		marioNormal.setEstado(new SuperMario(marioNormal.getMario()));
 		marioNormal.sumarPuntos(PUNTOS_MARIO_NORMAL);
 		marioNormal.getMario().getJuego().reproducirSonidoPowerUp();
+		eliminarImagen();
 	}
 
 	@Override
 	public void aplicarEfecto(SuperMario superMario) {
 		superMario.sumarPuntos(PUNTOS_MARIO_SUPERMARIO);
+		eliminarImagen();
 	}
 
 	@Override
 	public void aplicarEfecto(SuperMarioFuego superMarioFuego) {
 		superMarioFuego.sumarPuntos(PUNTOS_MARIO_SUPERMARIO);
+		eliminarImagen();
 	}
 
 	@Override
 	public void aplicarEfecto(MarioInvencible marioInvencible) {
 		marioInvencible.sumarPuntos(PUNTOS_MARIO_SUPERMARIO);
+		eliminarImagen();
 	}
 }

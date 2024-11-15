@@ -22,29 +22,41 @@ public class ChampinionVerde extends PowerUp {
 	
 	@Override
 	public void aplicarEfecto(MarioNormal marioNormal) {
+		
 		marioNormal.getMario().sumarVidas();
 		marioNormal.sumarPuntos(PUNTOS_MARIO);
 		marioNormal.getMario().getJuego().reproducirSonidoPowerUp();
+		eliminarImagen();
+		
 	}
 
 	@Override
 	public void aplicarEfecto(SuperMario superMario) {
+		
 		superMario.getMario().sumarVidas();
 		superMario.sumarPuntos(PUNTOS_MARIO);
 		superMario.getMario().getJuego().reproducirSonidoPowerUp();
+		eliminarImagen();
+		
 	}
 
 	@Override
 	public void aplicarEfecto(SuperMarioFuego superMarioFuego) {
+		
 		superMarioFuego.getMario().sumarVidas();
 		superMarioFuego.sumarPuntos(PUNTOS_MARIO);
 		superMarioFuego.getMario().getJuego().reproducirSonidoPowerUp();
+		eliminarImagen();
+		
 	}
 
 	@Override
 	public void aplicarEfecto(MarioInvencible marioInvencible) {
+		
 		marioInvencible.getMario().sumarVidas();
 		marioInvencible.sumarPuntos(PUNTOS_MARIO);
 		marioInvencible.getMario().getJuego().reproducirSonidoPowerUp();
+		eliminarImagen();
+		
 	}
 }

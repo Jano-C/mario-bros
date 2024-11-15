@@ -132,6 +132,9 @@ public class MarioNormal implements EstadoMario{
 		if(lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(lakitu);
 			mario.getJuego().getNivelActual().eliminarEnemigo(lakitu);
+			mario.getJuego().reproducirSonidoBump();
+			mario.setAire(false);
+			mario.saltar();
 			
 		}else {
 			lakitu.atacar(mario);
@@ -152,6 +155,9 @@ public class MarioNormal implements EstadoMario{
 		if(lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(buzzyBeetle);
 			mario.getJuego().getNivelActual().eliminarEnemigo(buzzyBeetle);
+			mario.getJuego().reproducirSonidoBump();
+			mario.setAire(false);
+			mario.saltar();
 			
 		}else {
 			buzzyBeetle.atacar(mario);
@@ -172,6 +178,9 @@ public class MarioNormal implements EstadoMario{
 		if(lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(goomba);
 			mario.getJuego().getNivelActual().eliminarEnemigo(goomba);
+			mario.getJuego().reproducirSonidoBump();
+			mario.setAire(false);
+			mario.saltar();
 
 		}else {
 			goomba.atacar(mario);
@@ -183,8 +192,14 @@ public class MarioNormal implements EstadoMario{
 	public void colisionaConKoopaTroopa(KoopaTroopa koopaTroopa, int lado) {
 		
 		if(lado == DetectorColisiones.ABAJO_4) {
+			
 			mario.atacar(koopaTroopa);
-			mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
+			if(koopaTroopa.getVidas() == 0) {
+				mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
+				mario.getJuego().reproducirSonidoBump();
+				mario.setAire(false);
+				mario.saltar();
+			}
 
 		}else {
 			koopaTroopa.atacar(mario);

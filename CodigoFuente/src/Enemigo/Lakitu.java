@@ -23,8 +23,7 @@ public class Lakitu extends Enemigo{
 	
 	public void serAfectadoPorJugador(Mario mario) {
 		mario.sumarPuntaje(PUNTOS_A_SUMAR);
-		mario.setAire(false);
-		mario.saltar();
+		eliminarImagen();
 	}
 	
 	public void atacar(Mario mario) {

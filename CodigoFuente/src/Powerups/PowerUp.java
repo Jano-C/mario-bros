@@ -46,5 +46,9 @@ public abstract class PowerUp extends Entidad implements Visitable {
 	public int getAlto() {
 		return alto;
 	}
+	
+	protected void eliminarImagen() {
+		observer.notificarMuerte();
+	}
 
 }

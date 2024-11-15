@@ -133,6 +133,9 @@ public class MarioInvencible implements EstadoMario {
 		
 		mario.atacar(lakitu);
 		mario.getJuego().getNivelActual().eliminarEnemigo(lakitu);
+		mario.getJuego().reproducirSonidoBump();
+		mario.setAire(false);
+		mario.saltar();
 		
 	}
 
@@ -141,6 +144,9 @@ public class MarioInvencible implements EstadoMario {
 		
 		mario.atacar(spiny);
 		mario.getJuego().getNivelActual().eliminarEnemigo(spiny);
+		mario.getJuego().reproducirSonidoBump();
+		mario.setAire(false);
+		mario.saltar();
 		
 	}
 
@@ -149,6 +155,9 @@ public class MarioInvencible implements EstadoMario {
 		
 		mario.atacar(buzzyBeetle);
 		mario.getJuego().getNivelActual().eliminarEnemigo(buzzyBeetle);
+		mario.getJuego().reproducirSonidoBump();
+		mario.setAire(false);
+		mario.saltar();
 		
 	}
 
@@ -157,6 +166,9 @@ public class MarioInvencible implements EstadoMario {
 		
 		mario.atacar(piranhaPlant);
 		mario.getJuego().getNivelActual().eliminarEnemigo(piranhaPlant);
+		mario.getJuego().reproducirSonidoBump();
+		mario.setAire(false);
+		mario.saltar();
 		
 	}
 
@@ -165,6 +177,9 @@ public class MarioInvencible implements EstadoMario {
 		
 		mario.atacar(goomba);
 		mario.getJuego().getNivelActual().eliminarEnemigo(goomba);
+		mario.getJuego().reproducirSonidoBump();
+		mario.setAire(false);
+		mario.saltar();
 		
 	}
 
@@ -173,6 +188,9 @@ public class MarioInvencible implements EstadoMario {
 		
 		mario.atacar(koopaTroopa);
 		mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
+		mario.getJuego().reproducirSonidoBump();
+		mario.setAire(false);
+		mario.saltar();
 		
 	}
 	

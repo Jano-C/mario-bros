@@ -105,7 +105,7 @@ public class SuperMario implements EstadoMario{
 	@Override
 	public void chocarLadrilloSolido(LadrilloSolido ladrilloSolido) {
 		
-		//faltaria un metodo destruir
+		ladrilloSolido.destruir();
 		mario.getJuego().getNivelActual().eliminarPlataforma(ladrilloSolido);
 		mario.getJuego().reproducirSonidoLadrilloRoto();
 		
@@ -132,6 +132,9 @@ public class SuperMario implements EstadoMario{
 		if(lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(lakitu);
 			mario.getJuego().getNivelActual().eliminarEnemigo(lakitu);
+			mario.getJuego().reproducirSonidoBump();
+			mario.setAire(false);
+			mario.saltar();
 
 		}else {
 			lakitu.atacar(mario);
@@ -153,6 +156,7 @@ public class SuperMario implements EstadoMario{
 			
 			mario.atacar(buzzyBeetle);
 			mario.getJuego().getNivelActual().eliminarEnemigo(buzzyBeetle);
+			mario.getJuego().reproducirSonidoBump();
 			mario.setAire(false);
 			mario.saltar();
 			
@@ -177,6 +181,9 @@ public class SuperMario implements EstadoMario{
 		if(lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(goomba);
 			mario.getJuego().getNivelActual().eliminarEnemigo(goomba);
+			mario.getJuego().reproducirSonidoBump();
+			mario.setAire(false);
+			mario.saltar();
 
 		}else {
 			goomba.atacar(mario);
@@ -190,7 +197,11 @@ public class SuperMario implements EstadoMario{
 		if(lado == DetectorColisiones.ABAJO_4) {
 			
 			mario.atacar(koopaTroopa);
+			mario.getJuego().reproducirSonidoBump();
+			mario.setAire(false);
+			mario.saltar();
 			if(koopaTroopa.getVidas() == 0) {
+				
 				mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
 
 			}

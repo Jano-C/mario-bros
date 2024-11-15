@@ -44,8 +44,7 @@ public class Spiny extends Enemigo {
 
 	@Override
 	public void serAfectadoPorJugador(Mario mario) {
+		eliminarImagen();
 		mario.sumarPuntaje(PUNTOS_A_SUMAR);
-		mario.setAire(false);
-		mario.saltar();	
 	}
 }

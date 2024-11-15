@@ -433,7 +433,6 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	@Override
 	public void visit(ChampinionVerde champinionVerde) {
 		
-		ocultarImagen(champinionVerde);
 		estadoActual.serAfectadoPorPowerUp(champinionVerde);
 		juego.getNivelActual().eliminarPowerUp(champinionVerde);
 	}
@@ -442,7 +441,6 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	@Override
 	public void visit(Estrella estrella) {
 		
-		ocultarImagen(estrella);
 		estadoActual.serAfectadoPorPowerUp(estrella);
 		juego.getNivelActual().eliminarPowerUp(estrella);
 		
@@ -452,7 +450,6 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	@Override
 	public void visit(FlorDeFuego florDeFuego) {
 		
-		ocultarImagen(florDeFuego);
 		estadoActual.serAfectadoPorPowerUp(florDeFuego);
 		juego.getNivelActual().eliminarPowerUp(florDeFuego);
 		
@@ -462,7 +459,6 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	@Override
 	public void visit(Moneda moneda) {
 		
-		ocultarImagen(moneda);
 		estadoActual.serAfectadoPorPowerUp(moneda);
 		juego.getNivelActual().eliminarPowerUp(moneda);
 		
@@ -472,7 +468,6 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	@Override
 	public void visit(SuperChampinion superChampinion) {
 		
-		ocultarImagen(superChampinion);
 		estadoActual.serAfectadoPorPowerUp(superChampinion);
 		juego.getNivelActual().eliminarPowerUp(superChampinion);
 		
@@ -528,8 +523,4 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 		this.setY(entidadColisionada.getY()  + this.getAlto() + 9);
 	}
 	
-	private void ocultarImagen(EntidadLogica entidadLogica) {
-		entidadLogica.setSprite(fabricaSprites.getVacio());
-		entidadLogica.notificarObserver();
-	}
 }

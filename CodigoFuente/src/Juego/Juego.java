@@ -58,7 +58,7 @@ public class Juego {
 	public void sonidoBolaDeFuego() {
 		fabricaSonidos.reproducir("bolafuego");
 	}
-	public void agarrarMoneda() {
+	public void reproducirSonidoAgarrarMoneda() {
 		fabricaSonidos.reproducir("moneda");
 	}
 	public void reproducirSonidoSalto() {
@@ -150,6 +150,10 @@ public class Juego {
 		registrarObserverEntidades(nivelActual.getPlataformas());
 		registrarObserverEntidades(nivelActual.getEnemigos());
 
+	}
+	
+	public void eliminarObserverEntidad(Observer observer) {
+		controladorVistas.eliminarEntidad(observer);
 	}
 	
 	protected void registrarObserverJugador(Mario mario) {
