@@ -330,7 +330,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 		
 		corregirPosicion(ladrilloSolido, lado);
 	    if(lado == DetectorColisiones.ARRIBA_3) { //Colisiona por abajo
-	    	estadoActual.chocharLadrilloSolido(ladrilloSolido);
+	    	estadoActual.chocarLadrilloSolido(ladrilloSolido);
 	    }
 		
 	}
