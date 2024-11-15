@@ -33,20 +33,12 @@ public class ManagerMovimientoBolaDeFuego extends Thread {
 				
 //				managerColisionesBolaDeFuego.actualizarLista(juego.getNivelActual().getBolasDeFuego());
 			
+				juego.detectarColsionesBolasDeFuegoYManejar();
 				for(BolaDeFuego bolaDeFuego : juego.getNivelActual().getBolasDeFuego()) {
 					bolaDeFuego.actualizarPosicion();
 				}
 				
-				for(Enemigo enemigo : juego.getNivelActual().getEnemigos()) {
-//					enemigo.acceptBolaDeFuego(managerColisionesBolaDeFuego);
-				}
-//				
-//				for(Plataforma plataforma : juego.getNivelActual().getPlataformas()) {
-//					plataforma.acceptBolaDeFuego(managerColisionesBolaDeFuego);
-//				}
-//				
-//				managerColisionesBolaDeFuego.eliminarEnemigos();
-//				managerColisionesBolaDeFuego.eliminarPlataformas();
+				
                 delta--;
 			}
 			

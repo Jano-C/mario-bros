@@ -37,6 +37,8 @@ public class BuzzyBeetle extends Enemigo{
 
 	@Override
 	public void acceptBolaDeFuego(VisitorBolaDeFuego visitorBolaDeFuego) {
+		
+		eliminarImagen();
 		visitorBolaDeFuego.visit(this);
 		
 	}

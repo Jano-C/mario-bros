@@ -36,6 +36,8 @@ public class Goomba extends Enemigo{
 	
 	@Override
 	public void serAfectadoPorBolaDeFuego(Mario mario) {
+		
+		eliminarImagen();
 		mario.sumarPuntaje(PUNTOS_A_SUMAR);
 	}
 

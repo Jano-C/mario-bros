@@ -215,6 +215,27 @@ public class Juego {
 		}
 	}
 	
+	public void detectarColsionesBolasDeFuegoYManejar() {
+		
+		for(BolaDeFuego bolaDeFuego : nivelActual.getBolasDeFuego()) {
+			
+			for(Plataforma plataforma : nivelActual.getPlataformas()) {
+				int lado = detectorColisiones.colisionaCon(bolaDeFuego, plataforma);
+				if(lado != DetectorColisiones.NINGUNO) {
+					plataforma.acceptBolaDeFuego(bolaDeFuego);
+				}
+			}
+			
+			for(Enemigo enemigo : nivelActual.getEnemigos()) {
+				int lado = detectorColisiones.colisionaCon(bolaDeFuego, enemigo);
+				if(lado != DetectorColisiones.NINGUNO) {
+					enemigo.acceptBolaDeFuego(bolaDeFuego);
+				}
+			
+			}
+		}
+	}
+	
 	
 	public void terminarJuego() {
 		reproducirSonidoMuerteMario();

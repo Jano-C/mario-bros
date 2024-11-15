@@ -31,4 +31,8 @@ public class LadrilloSolido extends Plataforma implements VisitablePorBolaDeFueg
 	public void destruir() {
 		observer.notificarMuerte();
 	}
+	
+	public void serAfectadoPorBolaDeFuego() {
+		this.destruir();
+	}
 }

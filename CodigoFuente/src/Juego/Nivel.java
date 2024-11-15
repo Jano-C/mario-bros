@@ -71,6 +71,10 @@ public class Nivel {
 		this.listaPowerUps.remove(powerUp);
 	}
 	
+	public void eliminarBolaDeFuego(BolaDeFuego bolaDeFuego) {
+		this.listaBolasDeFuego.remove(bolaDeFuego);
+	}
+	
 	public void agregarJugador(Mario mario) {
 		this.mario = mario;
 	}

@@ -14,7 +14,7 @@ import Visitor.VisitablePorBolaDeFuego;
 import Visitor.VisitorEnemigo;
 
 
-public abstract class Enemigo extends EntidadDinamica implements Visitable, VisitablePorBolaDeFuego, VisitorEnemigo{
+public abstract class Enemigo extends EntidadDinamica implements Visitable, VisitablePorBolaDeFuego, VisitorEnemigo {
 	
 	boolean enAire;
 	float multiplicadorVelocidad;

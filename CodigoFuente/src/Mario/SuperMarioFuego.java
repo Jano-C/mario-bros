@@ -33,7 +33,7 @@ public class SuperMarioFuego extends SuperMario{
 	public void crearBolaDeFuego() {
 		if (puedeLanzarBolaDeFuego()) {
 			
-			BolaDeFuego bolaDeFuego = new BolaDeFuego(fabricaSprites.getBolaDeFuego(), mario.getX(),mario.getY() + (mario.getAlto() / 3),ConstantesAuxiliares.TAMANOBOLADEFUEGO,ConstantesAuxiliares.TAMANOBOLADEFUEGO);
+			BolaDeFuego bolaDeFuego = new BolaDeFuego(fabricaSprites.getBolaDeFuego(), mario.getX(),mario.getY() + (mario.getAlto() / 3),ConstantesAuxiliares.TAMANOBOLADEFUEGO,ConstantesAuxiliares.TAMANOBOLADEFUEGO, mario.getJuego());
 			bolaDeFuego.setOrientacion(mario.getOrientacion());
 			mario.getJuego().registrarBolaDeFuego(bolaDeFuego);
 			mario.getJuego().getNivelActual().agregarBolaDeFuego(bolaDeFuego);
