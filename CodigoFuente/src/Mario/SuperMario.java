@@ -88,7 +88,7 @@ public class SuperMario implements EstadoMario{
 	}
 
 	@Override
-	public Sprite getSpriteIdeIzquierda() {
+	public Sprite getSpriteIdleIzquierda() {
 		return marioIdleLeft;
 	}
 

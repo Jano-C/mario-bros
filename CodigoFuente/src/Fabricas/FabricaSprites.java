@@ -148,6 +148,31 @@ public abstract class FabricaSprites {
 		return new Sprite(rutaACarpeta + "marioEstrellaJumpingLeft.png");
 	}
 	
+	public Sprite getMarioParpadeanteIdleRight() {
+		return new Sprite(rutaACarpeta + "marioParpadeanteIdleRight.png");
+	}
+	
+	public Sprite getMarioParpadeanteIdleLeft() {
+		return new Sprite(rutaACarpeta + "marioParpadeanteIdleLeft.png");	
+	}
+	
+	public Sprite getMarioParpadeanteMovingRight() {
+		return new Sprite(rutaACarpeta + "marioParpadeanteMovingRight.png");	
+	}
+	
+	public Sprite getMarioParpadeanteMovingLeft() {
+		return new Sprite(rutaACarpeta + "marioParpadeanteMovingLeft.png");	
+		}
+	
+	public Sprite getMarioParpadeanteJumpingRigth() {
+		return new Sprite(rutaACarpeta + "marioParpadeanteJumpingRight.png");	
+		}
+	
+	public Sprite getMarioParpadeanteJumpingLeft() {
+		return new Sprite(rutaACarpeta + "marioParpadeanteJumpingLeft.png");
+		}
+
+	
 	
 	
 	
@@ -266,6 +291,8 @@ public abstract class FabricaSprites {
 	public Sprite getBolaDeFuego() {
 		return new Sprite(rutaACarpeta + "bolaDeFuego.gif");
 	}
+	
+	
 
 
 }

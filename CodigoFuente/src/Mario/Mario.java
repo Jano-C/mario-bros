@@ -264,7 +264,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
             		sprite = estadoActual.getSpriteIdleDerecha();
             	}else {
             		nuevoSprite = MARIO_IDLE_LEFT;
-            		sprite = estadoActual.getSpriteIdeIzquierda();
+            		sprite = estadoActual.getSpriteIdleIzquierda();
             	}
             }
         } else {

@@ -22,7 +22,7 @@ public interface EstadoMario {
     public Sprite getSpriteMoviendoseDerecha();
     public Sprite getSpriteMoviendoseIzquierda();
     public Sprite getSpriteIdleDerecha();
-    public Sprite getSpriteIdeIzquierda();
+    public Sprite getSpriteIdleIzquierda();
     public Sprite getSpriteSaltandoIzquierda();
     public Sprite getSpriteSaltandoDerecha();
     public void chocarLadrilloSolido(LadrilloSolido ladrilloSolido);

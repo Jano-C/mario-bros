@@ -19,6 +19,8 @@ public class MarioInvencible implements EstadoMario {
 	protected Mario mario;
 	protected Sprite sprite;
 	protected EstadoMario estadoAnterior;
+	protected Timer timer;
+	protected static final int DURACION_EFECTO=150000;
     protected FabricaSprites fabricaSprites;
     protected Sprite marioIdleRight;
     protected Sprite marioIdleLeft;
@@ -40,6 +42,7 @@ public class MarioInvencible implements EstadoMario {
         this.estadoAnterior = estadoAnterior;
         mario.notificarMarioEstrella();
 		mario.setAlto(ConstantesAuxiliares.MARIOGRANDE_ALTO);
+		iniciarTemporizador();
 	}
 	
 	public EstadoMario getEstadoAnterior() {
@@ -95,7 +98,7 @@ public class MarioInvencible implements EstadoMario {
 	}
 
 	@Override
-	public Sprite getSpriteIdeIzquierda() {
+	public Sprite getSpriteIdleIzquierda() {
 		return marioIdleLeft;
 	}
 
@@ -170,6 +173,24 @@ public class MarioInvencible implements EstadoMario {
 		
 		mario.atacar(koopaTroopa);
 		mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
+		
+	}
+	
+	private void iniciarTemporizador() {
+		timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                desactivar(); 
+            }
+        }, DURACION_EFECTO);
+    }
+		
+	
+
+	private void desactivar() {
+		mario.setEstado(getEstadoAnterior());
+	    timer.cancel();
 		
 	}
 

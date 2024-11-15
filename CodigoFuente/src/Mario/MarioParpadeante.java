@@ -1,9 +1,10 @@
 package Mario;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import Auxiliares.ConstantesAuxiliares;
-import Auxiliares.DetectorColisiones;
 import Enemigo.BuzzyBeetle;
-import Enemigo.Enemigo;
 import Enemigo.Goomba;
 import Enemigo.KoopaTroopa;
 import Enemigo.Lakitu;
@@ -14,54 +15,60 @@ import Fabricas.Sprite;
 import Plataforma.LadrilloSolido;
 import Powerups.PowerUp;
 
-public class MarioNormal implements EstadoMario{
+public class MarioParpadeante implements EstadoMario {
 	
-	protected Sprite sprite;
 	protected Mario mario;
-	protected FabricaSprites fabricaSprites;
-	protected Sprite marioIdleRight;
+	protected Sprite sprite;
+	protected EstadoMario estadoAnterior;
+	protected Timer timer;
+	protected static final int DURACION_EFECTO=3000;
+    protected FabricaSprites fabricaSprites;
+    protected Sprite marioIdleRight;
     protected Sprite marioIdleLeft;
     protected Sprite marioMovingRight;
     protected Sprite marioMovingLeft;
     protected Sprite marioJumpingRight;
     protected Sprite marioJumpingLeft;
-
-    public MarioNormal(Mario mario) {
+    
+    public MarioParpadeante(Mario mario, EstadoMario estadoAnterior) {
         this.mario = mario;
         fabricaSprites = mario.getFabrica();
-        this.sprite = fabricaSprites.getMarioIdleRight();
-        marioIdleRight = fabricaSprites.getMarioIdleRight();
-        marioIdleLeft  = fabricaSprites.getMarioIdleLeft();
-        marioMovingRight = fabricaSprites.getMarioMovingRight();
-        marioMovingLeft = fabricaSprites.getMarioMovingLeft();
-        marioJumpingRight = fabricaSprites.getMarioJumpingRight();
-        marioJumpingLeft = fabricaSprites.getMarioJumpingLeft();
-
-        mario.setAlto(ConstantesAuxiliares.MARIONORMAL_ALTO);
-
-    }
+        this.sprite = fabricaSprites.getMario();
+        //FALTAN LOS SPRITES
+        marioIdleRight = fabricaSprites.getMarioParpadeanteIdleRight();
+        marioIdleLeft  = fabricaSprites.getMarioParpadeanteIdleLeft();
+        marioMovingRight = fabricaSprites.getMarioParpadeanteMovingRight();
+        marioMovingLeft = fabricaSprites.getMarioParpadeanteMovingLeft();
+        marioJumpingRight = fabricaSprites.getMarioParpadeanteJumpingRigth();
+        marioJumpingLeft = fabricaSprites.getMarioParpadeanteJumpingLeft();
+        //
+        this.estadoAnterior = estadoAnterior;
+        mario.notificarMarioEstrella();
+		mario.setAlto(ConstantesAuxiliares.MARIOGRANDE_ALTO);
+		iniciarTemporizador();
+	}
+	
+    
+    
 
 	@Override
 	public void recibirGolpe(int puntosARestar) {
-		mario.restarVidas();
-		mario.saltar();
-		if(mario.getVidas() == 0) {
-			mario.getJuego().terminarJuego();
-		}	
+		
+		
 	}
 
 	@Override
 	public Sprite getSprite() {
 		return sprite;
 	}
-	
+
+	@Override
 	public void serAfectadoPorPowerUp(PowerUp powerUp) {
-		powerUp.aplicarEfecto(this);
+		
 	}
 
 	@Override
 	public void sumarPuntos(int puntos) {
-		mario.sumarPuntaje(puntos);
 		
 	}
 
@@ -69,10 +76,6 @@ public class MarioNormal implements EstadoMario{
 	public void setEstado(EstadoMario estadoMario) {
 		mario.setEstado(estadoMario);
 		
-	}
-	
-	public Mario getMario() {
-		return mario;
 	}
 
 	@Override
@@ -98,101 +101,81 @@ public class MarioNormal implements EstadoMario{
 	@Override
 	public Sprite getSpriteSaltandoIzquierda() {
 		return marioJumpingLeft;
-	}
+		}
 
 	@Override
 	public Sprite getSpriteSaltandoDerecha() {
+		
 		return marioJumpingRight;
-	}
+		}
 
 	@Override
 	public void chocarLadrilloSolido(LadrilloSolido ladrilloSolido) {
 		
-	}
+		}
 
 	@Override
 	public void crearBolaDeFuego() {
-		// TODO Auto-generated method stub
-	}
+		
+		}
 
 	@Override
 	public EstadoMario getEstadoAnterior() {
-		return this;
-	}
-	
+		
+		return estadoAnterior;
+		}
+
 	@Override
 	public int getAlto() {
-		return ConstantesAuxiliares.MARIONORMAL_ALTO;
-	}
+		return ConstantesAuxiliares.MARIOGRANDE_ALTO;
 
-	//Testing
+		}
+
 	@Override
 	public void colisionaConLakitu(Lakitu lakitu, int lado) {
 		
-		if(lado == DetectorColisiones.ABAJO_4) {
-			mario.atacar(lakitu);
-			mario.getJuego().getNivelActual().eliminarEnemigo(lakitu);
-			
-		}else {
-			lakitu.atacar(mario);
 		}
-		
-	}
 
 	@Override
 	public void colisionaConSpiny(Spiny spiny, int lado) {
 		
-		spiny.atacar(mario);
-		
-	}
+		}
 
 	@Override
 	public void colisionaConBuzzyBeetle(BuzzyBeetle buzzyBeetle, int lado) {
 		
-		if(lado == DetectorColisiones.ABAJO_4) {
-			mario.atacar(buzzyBeetle);
-			mario.getJuego().getNivelActual().eliminarEnemigo(buzzyBeetle);
-			
-		}else {
-			buzzyBeetle.atacar(mario);
 		}
-		
-	}
 
 	@Override
 	public void colisionaConPiranhaPlant(PiranhaPlant piranhaPlant, int lado) {
 		
-		piranhaPlant.atacar(mario);
-		
-	}
+		}
 
 	@Override
 	public void colisionaConGoomba(Goomba goomba, int lado) {
 		
-		if(lado == DetectorColisiones.ABAJO_4) {
-			mario.atacar(goomba);
-			mario.getJuego().getNivelActual().eliminarEnemigo(goomba);
-
-		}else {
-			goomba.atacar(mario);
 		}
-		
-	}
 
 	@Override
 	public void colisionaConKoopaTroopa(KoopaTroopa koopaTroopa, int lado) {
 		
-		if(lado == DetectorColisiones.ABAJO_4) {
-			mario.atacar(koopaTroopa);
-			mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
-
-		}else {
-			koopaTroopa.atacar(mario);
 		}
+	private void iniciarTemporizador() {
+		timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                desactivar(); 
+            }
+        }, DURACION_EFECTO);
+    }
 		
+	
+
+	private void desactivar() {
+		mario.setEstado(getEstadoAnterior());
+	    timer.cancel();
 		
 	}
 
-
-	
 }
