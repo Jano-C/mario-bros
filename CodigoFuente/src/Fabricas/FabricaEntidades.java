@@ -48,11 +48,11 @@ public class FabricaEntidades {
 		return new KoopaTroopa(spriteKoopaTroopa,derecha,izquierda, x, y, ancho ,alto);
 	}
 	
-	public Lakitu getLakitu(int x, int y, int ancho, int alto,FabricaSprites fabricaSprites) {
+	public Lakitu getLakitu(int x, int y, int ancho, int alto, Juego juego) {
 		Sprite spriteLakitu = fabricaSprites.getLakitu();
 		Sprite izquierda = fabricaSprites.getLakituIzquierda();
 		Sprite derecha = fabricaSprites.getLakituDerecha();
-		return new Lakitu(spriteLakitu,derecha,izquierda, x, y, ancho ,alto, fabricaSprites);
+		return new Lakitu(spriteLakitu,derecha,izquierda, x, y, ancho ,alto, juego);
 	}
 	
 	public PiranhaPlant getPiranhaPlant(int x, int y, int ancho, int alto) {

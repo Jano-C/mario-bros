@@ -200,11 +200,11 @@ public abstract class FabricaSprites {
 	}
 	
 	public Sprite getLakituDerecha() {
-		return new Sprite(rutaACarpeta + "lakituDerecha.gif");
+		return new Sprite(rutaACarpeta + "lakituRight.png");
 	}
 
 	public Sprite getLakituIzquierda() {
-		return new Sprite(rutaACarpeta + "lakituIzquierda.gif");
+		return new Sprite(rutaACarpeta + "lakituLeft.png");
 	}
 	
 	public Sprite getSpiny() {

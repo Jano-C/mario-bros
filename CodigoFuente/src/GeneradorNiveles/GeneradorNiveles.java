@@ -91,7 +91,7 @@ import Juego.Nivel;
 		                	nivelGenerado.agregarEnemigo(koopaTroopa);
 		                	break;
 		                case 'L':
-		                	Lakitu lakitu = fabricaEntidades.getLakitu(posicionXPixeles, posicionYPixelesParaAltos, TAMANO_BLOQUE, TAMANO_BLOQUE_Y_MEDIO,juego.getFabricaSprites());
+		                	Lakitu lakitu = fabricaEntidades.getLakitu(posicionXPixeles, posicionYPixelesParaAltos, TAMANO_BLOQUE, TAMANO_BLOQUE_Y_MEDIO,juego);
 		                	nivelGenerado.agregarEnemigo(lakitu);
 		                	nivelGenerado.agregarLakitu(lakitu);
 		                	break;
