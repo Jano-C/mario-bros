@@ -3,13 +3,11 @@ package Juego;
 import Enemigo.Enemigo;
 import Mario.BolaDeFuego;
 import Plataforma.Plataforma;
-import Visitor.ManagerColisionesBolaDeFuego;
 
 public class ManagerMovimientoBolaDeFuego extends Thread {
 	
 	protected Juego juego;
 	private volatile boolean running;
-	protected ManagerColisionesBolaDeFuego managerColisionesBolaDeFuego;
 	
 	public ManagerMovimientoBolaDeFuego(Juego juego) {
 		this.juego = juego;
@@ -30,9 +28,7 @@ public class ManagerMovimientoBolaDeFuego extends Thread {
 			lastTime = currentTime;
 			
 			if(delta > 1) {
-				
-//				managerColisionesBolaDeFuego.actualizarLista(juego.getNivelActual().getBolasDeFuego());
-			
+					
 				juego.detectarColsionesBolasDeFuegoYManejar();
 				for(BolaDeFuego bolaDeFuego : juego.getNivelActual().getBolasDeFuego()) {
 					bolaDeFuego.actualizarPosicion();

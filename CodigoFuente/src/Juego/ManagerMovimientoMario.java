@@ -4,12 +4,10 @@ import Enemigo.Enemigo;
 import Mario.Mario;
 import Plataforma.Plataforma;
 import Powerups.PowerUp;
-import Visitor.ManagerColisionesMario;
 
 public class ManagerMovimientoMario extends Thread {
 	
 	protected Juego juego;
-	ManagerColisionesMario managerColisionesMario;
 	protected boolean marioEstaEnEstrella;
 	private volatile boolean running;
 	protected long inicioMarioEstrella;
@@ -34,21 +32,17 @@ public class ManagerMovimientoMario extends Thread {
 				
 				if(delta > 1) {
 					
-					//Aca tendriamos que tener un metodo de juego que detecte colisiones y maneje.
 					juego.detectarColisionesMarioYManejar();
 	                mario.moverse();
-	                
-
-	                
-	                
-	                if(marioEstaEnEstrella) {
-	                	if(inicioMarioEstrella >= finalMarioEstrella) {
-	                		mario.setEstado(mario.getEstado().getEstadoAnterior());
-	                		mario.actualizarTamano();
-	                		marioEstaEnEstrella = false;
-	                	}
-	                	inicioMarioEstrella = System.currentTimeMillis();
-	                }
+	  
+//	                if(marioEstaEnEstrella) {
+//	                	if(inicioMarioEstrella >= finalMarioEstrella) {
+//	                		mario.setEstado(mario.getEstado().getEstadoAnterior());
+//	                		mario.actualizarTamano();
+//	                		marioEstaEnEstrella = false;
+//	                	}
+//	                	inicioMarioEstrella = System.currentTimeMillis();
+//	                }
 	                
 	                delta--;
 				}

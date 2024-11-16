@@ -58,6 +58,7 @@ public class BolaDeFuego extends EntidadDinamica implements VisitorBolaDeFuego{
 	}
 	
 	public void destruir() {
+		juego.getNivelActual().eliminarBolaDeFuego(this);
 		observer.notificarMuerte();
 	}
 
