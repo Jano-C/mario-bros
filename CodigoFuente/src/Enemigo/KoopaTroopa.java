@@ -53,7 +53,7 @@ public class KoopaTroopa extends Enemigo {
 	}
 
 	@Override
-	public void acceptBolaDeFuego(VisitorBolaDeFuego visitorBolaDeFuego) {
+	public void acceptBolaDeFuego(VisitorBolaDeFuego visitorBolaDeFuego,int lado) {
 		visitorBolaDeFuego.visit(this);
 		
 	}
