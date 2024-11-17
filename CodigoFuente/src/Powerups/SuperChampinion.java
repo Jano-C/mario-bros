@@ -3,6 +3,7 @@ package Powerups;
 import Fabricas.Sprite;
 import Mario.MarioInvencible;
 import Mario.MarioNormal;
+import Mario.MarioParpadeante;
 import Mario.SuperMario;
 import Mario.SuperMarioFuego;
 import Visitor.VisitorMario;
@@ -46,5 +47,13 @@ public class SuperChampinion extends PowerUp {
 	public void aplicarEfecto(MarioInvencible marioInvencible) {
 		marioInvencible.sumarPuntos(PUNTOS_MARIO_SUPERMARIO);
 		eliminarImagen();
+	}
+	
+	@Override
+	public void aplicarEfecto(MarioParpadeante marioParpadeante) {
+		
+		marioParpadeante.sumarPuntos(PUNTOS_MARIO_NORMAL);
+		eliminarImagen();
+		
 	}
 }

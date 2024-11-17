@@ -43,11 +43,13 @@ public class MarioNormal implements EstadoMario{
 
 	@Override
 	public void recibirGolpe(int puntosARestar) {
+		mario.setEstado(new MarioParpadeante(mario, this));
 		mario.restarVidas();
 		mario.saltar();
 		if(mario.getVidas() == 0) {
 			mario.getJuego().terminarJuego();
-		}	
+		}
+		
 	}
 
 	@Override

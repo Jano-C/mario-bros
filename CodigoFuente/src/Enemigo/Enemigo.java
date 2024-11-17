@@ -152,7 +152,7 @@ public abstract class Enemigo extends EntidadDinamica implements Visitable, Visi
 		this.setY(entidadColisionada.getY() - this.getAlto());
 	}
 	
-	protected void eliminarImagen() {
+	public void eliminarImagen() {
 		observer.notificarMuerte();
 	}
 

@@ -3,6 +3,7 @@ package Powerups;
 import Fabricas.Sprite;
 import Mario.MarioInvencible;
 import Mario.MarioNormal;
+import Mario.MarioParpadeante;
 import Mario.SuperMario;
 import Mario.SuperMarioFuego;
 import Visitor.VisitorMario;
@@ -59,6 +60,14 @@ public class Estrella extends PowerUp{
 		
 		marioInvencible.sumarPuntos(PUNTOS_MARIO_ESTRELLA);
 		marioInvencible.getMario().getJuego().reproducirSonidoPowerUp();
+		eliminarImagen();
+		
+	}
+	
+	@Override
+	public void aplicarEfecto(MarioParpadeante marioParpadeante) {
+		
+		marioParpadeante.sumarPuntos(PUNTOS_MARIO_NORMAL);
 		eliminarImagen();
 		
 	}

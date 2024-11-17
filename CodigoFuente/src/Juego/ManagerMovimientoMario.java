@@ -35,14 +35,14 @@ public class ManagerMovimientoMario extends Thread {
 					juego.detectarColisionesMarioYManejar();
 	                mario.moverse();
 	  
-//	                if(marioEstaEnEstrella) {
-//	                	if(inicioMarioEstrella >= finalMarioEstrella) {
-//	                		mario.setEstado(mario.getEstado().getEstadoAnterior());
-//	                		mario.actualizarTamano();
-//	                		marioEstaEnEstrella = false;
-//	                	}
-//	                	inicioMarioEstrella = System.currentTimeMillis();
-//	                }
+	                if(marioEstaEnEstrella) {
+	                	if(inicioMarioEstrella >= finalMarioEstrella) {
+	                		mario.setEstado(mario.getEstado().getEstadoAnterior());
+	                		mario.actualizarTamano();
+	                		marioEstaEnEstrella = false;
+	                	}
+	                	inicioMarioEstrella = System.currentTimeMillis();
+	                }
 	                
 	                delta--;
 				}

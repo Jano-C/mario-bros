@@ -4,6 +4,7 @@ import Entidades.Entidad;
 import Fabricas.Sprite;
 import Mario.MarioInvencible;
 import Mario.MarioNormal;
+import Mario.MarioParpadeante;
 import Mario.SuperMario;
 import Mario.SuperMarioFuego;
 import Visitor.Visitable;
@@ -21,6 +22,8 @@ public abstract class PowerUp extends Entidad implements Visitable {
 	public abstract void aplicarEfecto(SuperMarioFuego superMarioFuego);
 	
 	public abstract void aplicarEfecto(MarioInvencible marioInvencible);
+	
+	public abstract void aplicarEfecto(MarioParpadeante marioParpadeante);
 	
 	public int getX() {
 		return posicion.getX();

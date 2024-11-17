@@ -188,6 +188,7 @@ public class MarioInvencible implements EstadoMario {
 		
 		mario.atacar(koopaTroopa);
 		mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
+		koopaTroopa.eliminarImagen();
 		mario.getJuego().reproducirSonidoBump();
 		mario.setAire(false);
 		mario.saltar();

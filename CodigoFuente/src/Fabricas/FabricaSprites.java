@@ -157,20 +157,20 @@ public abstract class FabricaSprites {
 	}
 	
 	public Sprite getMarioParpadeanteMovingRight() {
-		return new Sprite(rutaACarpeta + "marioParpadeanteMovingRight.png");	
+		return new Sprite(rutaACarpeta + "marioParpadeanteMovingRight.gif");	
 	}
 	
 	public Sprite getMarioParpadeanteMovingLeft() {
-		return new Sprite(rutaACarpeta + "marioParpadeanteMovingLeft.png");	
-		}
+		return new Sprite(rutaACarpeta + "marioParpadeanteMovingLeft.gif");	
+	}
 	
-	public Sprite getMarioParpadeanteJumpingRigth() {
+	public Sprite getMarioParpadeanteJumpingRight() {
 		return new Sprite(rutaACarpeta + "marioParpadeanteJumpingRight.png");	
-		}
+	}
 	
 	public Sprite getMarioParpadeanteJumpingLeft() {
 		return new Sprite(rutaACarpeta + "marioParpadeanteJumpingLeft.png");
-		}
+	}
 
 	
 	
