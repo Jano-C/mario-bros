@@ -269,8 +269,5 @@ public class Juego {
 		this.nombre=nombre;
 	}
 	
-	public void marioEstaEnEstrella() {
-		managerMovimientoMario.marioEstaEnEstrella();
-	}
 	
 }

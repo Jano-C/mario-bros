@@ -20,7 +20,7 @@ public class MarioInvencible implements EstadoMario {
 	protected Sprite sprite;
 	protected EstadoMario estadoAnterior;
 	protected Timer timer;
-	protected static final int DURACION_EFECTO=150000;
+	protected static final int DURACION_EFECTO=15000;
     protected FabricaSprites fabricaSprites;
     protected Sprite marioIdleRight;
     protected Sprite marioIdleLeft;
@@ -40,7 +40,6 @@ public class MarioInvencible implements EstadoMario {
         marioJumpingRight = fabricaSprites.getMarioEstrellaJumpingRight();
         marioJumpingLeft = fabricaSprites.getMarioEstrellaJumpingLeft();
         this.estadoAnterior = estadoAnterior;
-        mario.notificarMarioEstrella();
 		mario.setAlto(ConstantesAuxiliares.MARIOGRANDE_ALTO);
 		iniciarTemporizador();
 	}
@@ -198,7 +197,7 @@ public class MarioInvencible implements EstadoMario {
 	private void iniciarTemporizador() {
 		timer = new Timer();
         timer.schedule(new TimerTask() {
-            @Override
+          
             public void run() {
                 desactivar(); 
             }
@@ -208,6 +207,7 @@ public class MarioInvencible implements EstadoMario {
 	
 
 	private void desactivar() {
+		mario.setAlto(getEstadoAnterior().getAlto());
 		mario.setEstado(getEstadoAnterior());
 	    timer.cancel();
 		
