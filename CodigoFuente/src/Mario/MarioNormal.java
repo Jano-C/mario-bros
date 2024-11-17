@@ -196,11 +196,11 @@ public class MarioNormal implements EstadoMario{
 		if(lado == DetectorColisiones.ABAJO_4) {
 			
 			mario.atacar(koopaTroopa);
+			mario.setAire(false);
+			mario.saltar();
 			if(koopaTroopa.getVidas() == 0) {
 				mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
 				mario.getJuego().reproducirSonidoBump();
-				mario.setAire(false);
-				mario.saltar();
 			}
 
 		}else {

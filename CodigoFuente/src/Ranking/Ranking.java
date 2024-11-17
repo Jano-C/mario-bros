@@ -56,7 +56,6 @@ public class Ranking {
     public void mostrarRanking() {
         for (int pos = 0; pos < cantJugadores; pos++) {
             Jugador jugador = topRanking[pos];
-            System.out.println("Nombre: " + jugador.getNombre() + " Puntaje: " + jugador.getPuntaje());
         }
     }
     
@@ -72,10 +71,7 @@ public class Ranking {
 	            int puntaje = Integer.parseInt(partes[1]);
 	            topRanking[cantJugadores] = new Jugador(nombre, puntaje);
 	            cantJugadores++;
-	            System.out.println("Jugador cargado:" + nombre + " " + puntaje);
 	        }
-	
-	        System.out.println("Ranking cargado exitosamente desde Ranking.txt.");
 	    } catch (IOException e) {
 	        System.err.println("Error al cargar el ranking desde el archivo: " + e.getMessage());
 	    } catch (NumberFormatException e) {
@@ -90,7 +86,6 @@ public class Ranking {
 	            writer.write("Nombre: " + jugador.getNombre() + " Puntaje: " + jugador.getPuntaje());
 	            writer.newLine();
 	        }
-	        System.out.println("Ranking guardado exitosamente en Ranking.txt.");
 	    } catch (IOException e) {
 	        System.err.println("Error al guardar el ranking en el archivo: " + e.getMessage());
 	    }

@@ -37,6 +37,7 @@ public class KoopaTroopa extends Enemigo {
 	
 	public void serAfectadoPorJugador(Mario mario) {
 		vidas--;
+		System.out.println("Mario ataco a kopa");
 		if(vidas == 0) {
 			eliminarImagen();
 			mario.sumarPuntaje(PUNTOS_A_SUMAR);
