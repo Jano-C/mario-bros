@@ -9,7 +9,7 @@ import java.util.Map;
 public class ReproductorSonido {
 
     private Map<String, Clip> clips = new HashMap<>();
-    private float volumenGeneral = -10.0f; // Volumen inicial en decibelios (puedes ajustar según prefieras)
+    private float volumenGeneral = -10.0f; // Volumen inicial en decibelios (puedes ajustar según lo que quieras)
 
     public void cargarSonido(String nombre, String rutaArchivo) {
         try {

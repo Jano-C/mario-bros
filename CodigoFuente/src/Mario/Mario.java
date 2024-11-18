@@ -300,12 +300,6 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	public int getVidas() {
 		return vidas;
 	}
-	
-	public void notificarMarioEstrella() {
-		juego.marioEstaEnEstrella();
-	}
-
-
 
 
 	@Override
