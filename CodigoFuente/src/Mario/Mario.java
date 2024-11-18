@@ -54,9 +54,6 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	protected static final int MARIO_JUMPING_RIGHT = 4;
 	protected static final int MARIO_JUMPING_LEFT = 5;
 	
-	protected long tiempoUltimaColisionConEnemigo = 0;
-	protected static final long DELAY_DE_COLISIONES = 500;
-	
 	public Mario(Sprite sprite, int x, int y, int ancho, int alto, Juego juego) {
         super(sprite,x,y,ancho,alto);
         fabricaSprites = juego.getFabricaSprites();
@@ -350,26 +347,15 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	@Override
 	public void visit(BuzzyBeetle buzzyBeetle, int lado) {
 		
-		long tiempoActual = System.currentTimeMillis();
-		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
-			
-			estadoActual.colisionaConBuzzyBeetle(buzzyBeetle, lado);
-			
-		}
+		estadoActual.colisionaConBuzzyBeetle(buzzyBeetle, lado);
 
-		
 	}
 
 
 	@Override
 	public void visit(Goomba gommba, int lado) {
 		
-		long tiempoActual = System.currentTimeMillis();
-		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
-			
-			estadoActual.colisionaConGoomba(gommba, lado);
-			
-		}
+		estadoActual.colisionaConGoomba(gommba, lado);
 		
 	}
 
@@ -377,12 +363,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	@Override
 	public void visit(KoopaTroopa koopaTroopa, int lado) {
 		
-		long tiempoActual = System.currentTimeMillis();
-		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
-			
-			estadoActual.colisionaConKoopaTroopa(koopaTroopa, lado);
-			
-		}
+		estadoActual.colisionaConKoopaTroopa(koopaTroopa, lado);
 		
 	}
 
@@ -390,12 +371,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	@Override
 	public void visit(Lakitu lakitu, int lado) {
 		
-		long tiempoActual = System.currentTimeMillis();
-		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
-			
-			estadoActual.colisionaConLakitu(lakitu, lado);
-			
-		}
+		estadoActual.colisionaConLakitu(lakitu, lado);
 		
 	}
 
@@ -403,24 +379,14 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	@Override
 	public void visit(PiranhaPlant piranhaPlant, int lado) {
 		
-		long tiempoActual = System.currentTimeMillis();
-		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
-			
-			estadoActual.colisionaConPiranhaPlant(piranhaPlant, lado);
-			
-		}
+		estadoActual.colisionaConPiranhaPlant(piranhaPlant, lado);
 	}
 
 
 	@Override
 	public void visit(Spiny spiny, int lado) {
 		
-		long tiempoActual = System.currentTimeMillis();
-		if (tiempoActual - tiempoUltimaColisionConEnemigo >= DELAY_DE_COLISIONES) {
-			
-			estadoActual.colisionaConSpiny(spiny, lado);
-			
-		}
+		estadoActual.colisionaConSpiny(spiny, lado);
 	}
 
 
