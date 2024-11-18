@@ -7,9 +7,6 @@ public abstract class FabricaSprites {
 	public FabricaSprites(String rutaACarpeta) {
 		this.rutaACarpeta = rutaACarpeta;
 	}
-	public Sprite getKoopaTroopaUnaVidaIzquierda() {
-		return new Sprite(rutaACarpeta + "koopatroopaunavidaIzquierda.gif");
-	}
 	
 	public Sprite getBloqueDePreguntasVacio() {
 		return new Sprite(rutaACarpeta + "bloqueDePreguntasVacio.png");
@@ -170,13 +167,6 @@ public abstract class FabricaSprites {
 	public Sprite getMarioParpadeanteJumpingLeft() {
 		return new Sprite(rutaACarpeta + "marioParpadeanteJumpingLeft.png");
 	}
-
-	
-	
-	
-	
-	
-	
 	
 	public Sprite get() {
 		return new Sprite(rutaACarpeta + ".gif");

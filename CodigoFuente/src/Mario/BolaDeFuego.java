@@ -1,5 +1,6 @@
 package Mario;
 
+import Auxiliares.DetectorColisiones;
 import Enemigo.Enemigo;
 import Entidades.EntidadDinamica;
 import Fabricas.Sprite;
@@ -11,16 +12,19 @@ import Visitor.VisitorBolaDeFuego;
 public class BolaDeFuego extends EntidadDinamica implements VisitorBolaDeFuego{
 
 	protected Juego juego;
+	protected int gravedad;
 	
 	public BolaDeFuego(Sprite sprite, int x, int y, int ancho, int alto, Juego juego) {
 		super(sprite, x, y, ancho, alto);
 		this.velocidad=6;
 		this.juego = juego;
+		this.gravedad=1;
 		
 	}
 	 
 	public void actualizarPosicion() {
 		posicion.setX(posicion.getX()+velocidad);
+		posicion.setY(posicion.getY()+gravedad);
 		this.notificarObserver();		
 	}
 
@@ -29,10 +33,15 @@ public class BolaDeFuego extends EntidadDinamica implements VisitorBolaDeFuego{
 	}
 
 	@Override
-	public void visit(Plataforma plataforma) {
-		
+	public void visit(Plataforma plataforma,int lado) {
+		if(lado==DetectorColisiones.ABAJO_4) {
+			gravedad=gravedad*-1;
+		}
+		else {
 		this.destruir();
 		juego.getNivelActual().eliminarBolaDeFuego(this);
+		}
+		
 		
 	}
 

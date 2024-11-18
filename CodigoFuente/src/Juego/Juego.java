@@ -222,14 +222,14 @@ public class Juego {
 			for(Plataforma plataforma : nivelActual.getPlataformas()) {
 				int lado = detectorColisiones.colisionaCon(bolaDeFuego, plataforma);
 				if(lado != DetectorColisiones.NINGUNO) {
-					plataforma.acceptBolaDeFuego(bolaDeFuego);
+					plataforma.acceptBolaDeFuego(bolaDeFuego,lado);
 				}
 			}
 			
 			for(Enemigo enemigo : nivelActual.getEnemigos()) {
 				int lado = detectorColisiones.colisionaCon(bolaDeFuego, enemigo);
 				if(lado != DetectorColisiones.NINGUNO) {
-					enemigo.acceptBolaDeFuego(bolaDeFuego);
+					enemigo.acceptBolaDeFuego(bolaDeFuego,lado);
 				}
 			
 			}
