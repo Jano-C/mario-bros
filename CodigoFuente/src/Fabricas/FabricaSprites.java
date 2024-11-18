@@ -7,6 +7,9 @@ public abstract class FabricaSprites {
 	public FabricaSprites(String rutaACarpeta) {
 		this.rutaACarpeta = rutaACarpeta;
 	}
+	public Sprite getKoopaTroopaUnaVidaIzquierda() {
+		return new Sprite(rutaACarpeta + "koopatroopaunavidaIzquierda.gif");
+	}
 	
 	public Sprite getBloqueDePreguntasVacio() {
 		return new Sprite(rutaACarpeta + "bloqueDePreguntasVacio.png");
@@ -31,7 +34,6 @@ public abstract class FabricaSprites {
 	public Sprite getTechoTuberiaDerecha() {
 		return new Sprite(rutaACarpeta + "techoTuberiaDerecha.png");
 	}
-	
 	
 	public Sprite getMario() {
 		return new Sprite(rutaACarpeta + "mario.gif");
@@ -60,9 +62,6 @@ public abstract class FabricaSprites {
 	public Sprite getMarioJumpingLeft() {
 		return new Sprite(rutaACarpeta + "marioJumpingLeft.png");
 	}
-	
-	
-	
 	
 	public Sprite getSuperMario() {
 		return new Sprite(rutaACarpeta + "superMarioIdleRight.png");
