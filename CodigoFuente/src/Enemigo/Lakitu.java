@@ -43,7 +43,7 @@ public class Lakitu extends Enemigo {
 		if (cantidadSpinys > 0 && puedeArrojarSpiny() == true) {
 			Spiny spiny = new Spiny(fabricaSprites.getSpiny(), fabricaSprites.getSpinyDerecha(),
 					fabricaSprites.getSpinyIzquierda(), posicion.getX(), posicion.getY(), 32, 32);
-			
+
 			juego.registrarObserverEntidad(spiny);
 			juego.getNivelActual().agregarEnemigo(spiny);
 			cantidadSpinys--;
@@ -51,9 +51,9 @@ public class Lakitu extends Enemigo {
 	}
 
 	private boolean puedeArrojarSpiny() {
-		
+
 		boolean toret = false;
-		
+
 		if (System.currentTimeMillis() > ultimoSpinyArrojado + INTERVALO_ARROJAR_SPINY) {
 			ultimoSpinyArrojado = System.currentTimeMillis();
 			toret = true;
@@ -67,7 +67,7 @@ public class Lakitu extends Enemigo {
 	}
 
 	@Override
-	public void acceptBolaDeFuego(VisitorBolaDeFuego visitorBolaDeFuego,int lado) {
+	public void acceptBolaDeFuego(VisitorBolaDeFuego visitorBolaDeFuego, int lado) {
 		visitorBolaDeFuego.visit(this);
 	}
 

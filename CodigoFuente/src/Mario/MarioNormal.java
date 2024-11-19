@@ -14,49 +14,49 @@ import Fabricas.Sprite;
 import Plataforma.LadrilloSolido;
 import Powerups.PowerUp;
 
-public class MarioNormal implements EstadoMario{
-	
+public class MarioNormal implements EstadoMario {
+
 	protected Sprite sprite;
 	protected Mario mario;
 	protected FabricaSprites fabricaSprites;
 	protected Sprite marioIdleRight;
-    protected Sprite marioIdleLeft;
-    protected Sprite marioMovingRight;
-    protected Sprite marioMovingLeft;
-    protected Sprite marioJumpingRight;
-    protected Sprite marioJumpingLeft;
+	protected Sprite marioIdleLeft;
+	protected Sprite marioMovingRight;
+	protected Sprite marioMovingLeft;
+	protected Sprite marioJumpingRight;
+	protected Sprite marioJumpingLeft;
 
-    public MarioNormal(Mario mario) {
-        this.mario = mario;
-        fabricaSprites = mario.getFabrica();
-        this.sprite = fabricaSprites.getMarioIdleRight();
-        marioIdleRight = fabricaSprites.getMarioIdleRight();
-        marioIdleLeft  = fabricaSprites.getMarioIdleLeft();
-        marioMovingRight = fabricaSprites.getMarioMovingRight();
-        marioMovingLeft = fabricaSprites.getMarioMovingLeft();
-        marioJumpingRight = fabricaSprites.getMarioJumpingRight();
-        marioJumpingLeft = fabricaSprites.getMarioJumpingLeft();
+	public MarioNormal(Mario mario) {
+		this.mario = mario;
+		fabricaSprites = mario.getFabrica();
+		this.sprite = fabricaSprites.getMarioIdleRight();
+		marioIdleRight = fabricaSprites.getMarioIdleRight();
+		marioIdleLeft = fabricaSprites.getMarioIdleLeft();
+		marioMovingRight = fabricaSprites.getMarioMovingRight();
+		marioMovingLeft = fabricaSprites.getMarioMovingLeft();
+		marioJumpingRight = fabricaSprites.getMarioJumpingRight();
+		marioJumpingLeft = fabricaSprites.getMarioJumpingLeft();
 
-        mario.setAlto(ConstantesAuxiliares.MARIONORMAL_ALTO);
+		mario.setAlto(ConstantesAuxiliares.MARIONORMAL_ALTO);
 
-    }
+	}
 
 	@Override
 	public void recibirGolpe(int puntosARestar) {
 		mario.setEstado(new MarioParpadeante(mario, this));
 		mario.restarVidas();
 		mario.saltar();
-		if(mario.getVidas() == 0) {
+		if (mario.getVidas() == 0) {
 			mario.getJuego().terminarJuego();
 		}
-		
+
 	}
 
 	@Override
 	public Sprite getSprite() {
 		return sprite;
 	}
-	
+
 	public void serAfectadoPorPowerUp(PowerUp powerUp) {
 		powerUp.aplicarEfecto(this);
 	}
@@ -64,15 +64,15 @@ public class MarioNormal implements EstadoMario{
 	@Override
 	public void sumarPuntos(int puntos) {
 		mario.sumarPuntaje(puntos);
-		
+
 	}
 
 	@Override
 	public void setEstado(EstadoMario estadoMario) {
 		mario.setEstado(estadoMario);
-		
+
 	}
-	
+
 	public Mario getMario() {
 		return mario;
 	}
@@ -109,7 +109,7 @@ public class MarioNormal implements EstadoMario{
 
 	@Override
 	public void chocarLadrilloSolido(LadrilloSolido ladrilloSolido) {
-		
+
 	}
 
 	@Override
@@ -121,95 +121,92 @@ public class MarioNormal implements EstadoMario{
 	public EstadoMario getEstadoAnterior() {
 		return this;
 	}
-	
+
 	@Override
 	public int getAlto() {
 		return ConstantesAuxiliares.MARIONORMAL_ALTO;
 	}
 
-	//Testing
+	// Testing
 	@Override
 	public void colisionaConLakitu(Lakitu lakitu, int lado) {
-		
-		if(lado == DetectorColisiones.ABAJO_4) {
+
+		if (lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(lakitu);
 			mario.getJuego().getNivelActual().eliminarEnemigo(lakitu);
 			mario.getJuego().reproducirSonidoBump();
 			mario.setAire(false);
 			mario.saltar();
-			
-		}else {
+
+		} else {
 			lakitu.atacar(mario);
 		}
-		
+
 	}
 
 	@Override
 	public void colisionaConSpiny(Spiny spiny, int lado) {
-		
+
 		spiny.atacar(mario);
-		
+
 	}
 
 	@Override
 	public void colisionaConBuzzyBeetle(BuzzyBeetle buzzyBeetle, int lado) {
-		
-		if(lado == DetectorColisiones.ABAJO_4) {
+
+		if (lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(buzzyBeetle);
 			mario.getJuego().getNivelActual().eliminarEnemigo(buzzyBeetle);
 			mario.getJuego().reproducirSonidoBump();
 			mario.setAire(false);
 			mario.saltar();
-			
-		}else {
+
+		} else {
 			buzzyBeetle.atacar(mario);
 		}
-		
+
 	}
 
 	@Override
 	public void colisionaConPiranhaPlant(PiranhaPlant piranhaPlant, int lado) {
-		
+
 		piranhaPlant.atacar(mario);
-		
+
 	}
 
 	@Override
 	public void colisionaConGoomba(Goomba goomba, int lado) {
-		
-		if(lado == DetectorColisiones.ABAJO_4) {
+
+		if (lado == DetectorColisiones.ABAJO_4) {
 			mario.atacar(goomba);
 			mario.getJuego().getNivelActual().eliminarEnemigo(goomba);
 			mario.getJuego().reproducirSonidoBump();
 			mario.setAire(false);
 			mario.saltar();
 
-		}else {
+		} else {
 			goomba.atacar(mario);
 		}
-		
+
 	}
 
 	@Override
 	public void colisionaConKoopaTroopa(KoopaTroopa koopaTroopa, int lado) {
-		
-		if(lado == DetectorColisiones.ABAJO_4) {
-			
+
+		if (lado == DetectorColisiones.ABAJO_4) {
+
 			mario.atacar(koopaTroopa);
 			mario.setAire(false);
 			mario.saltar();
-			if(koopaTroopa.getVidas() == 0) {
+			if (koopaTroopa.getVidas() == 0) {
 				mario.getJuego().getNivelActual().eliminarEnemigo(koopaTroopa);
 				mario.getJuego().reproducirSonidoBump();
 			}
 
-		}else {
+		} else {
 			koopaTroopa.atacar(mario);
 		}
-		
-		
+
 	}
 
-
-	
 }

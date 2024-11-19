@@ -3,44 +3,42 @@ package Juego;
 import Mario.Mario;
 
 public class ManagerMovimientoMario extends Thread {
-	
+
 	protected Juego juego;
 	private volatile boolean running;
-	
+
 	public ManagerMovimientoMario(Juego juego) {
-		
+
 		this.juego = juego;
 	}
-	  
-		@Override
+
+	@Override
 	public void run() {
 		Mario mario = juego.getNivelActual().getMario();
 		running = true;
-		double drawInterval =  1000000000/60;
+		double drawInterval = 1000000000 / 60;
 		double delta = 0;
 		long lastTime = System.nanoTime();
 		long currentTime;
-		while(running == true) {
+		while (running == true) {
 			currentTime = System.nanoTime();
 			delta += (currentTime - lastTime) / drawInterval;
 			lastTime = currentTime;
-				
-			if(delta > 1) {
-					
+
+			if (delta > 1) {
+
 				juego.detectarColisionesMarioYManejar();
-	            mario.moverse();
-	  
-	      
-	            delta--;
-				}
-				
+				mario.moverse();
+
+				delta--;
 			}
+
 		}
-		
-		@Override
+	}
+
+	@Override
 	public void interrupt() {
-	        running = false;
-	    }
-		
-		
+		running = false;
+	}
+
 }

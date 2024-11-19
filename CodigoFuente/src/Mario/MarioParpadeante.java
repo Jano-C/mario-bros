@@ -41,7 +41,7 @@ public class MarioParpadeante implements EstadoMario {
 		marioJumpingRight = fabricaSprites.getMarioParpadeanteJumpingRight();
 		marioJumpingLeft = fabricaSprites.getMarioParpadeanteJumpingLeft();
 		this.estadoAnterior = estadoAnterior;
-		
+
 		mario.setAlto(ConstantesAuxiliares.MARIONORMAL_ALTO);
 		iniciarTemporizador();
 	}

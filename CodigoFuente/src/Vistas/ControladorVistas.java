@@ -7,8 +7,8 @@ import Fabricas.FabricaSpritesModoOriginal;
 import Fabricas.FabricaSpritesModoSecundario;
 import Juego.Juego;
 
-public class ControladorVistas implements ControladorVistasInterfaz{
-	
+public class ControladorVistas implements ControladorVistasInterfaz {
+
 	protected JFrame ventana;
 	protected Juego juego;
 	protected PanelPantallaJuego panelPantallaJuego;
@@ -16,7 +16,7 @@ public class ControladorVistas implements ControladorVistasInterfaz{
 	protected PanelPantallaRanking panelPantallaRanking;
 	protected PanelPantallaPerder panelPantallaPerder;
 	protected PanelPantallaGanar panelPantallaGanar;
-	
+
 	public ControladorVistas(Juego juego) {
 		this.juego = juego;
 		this.panelPantallaInicio = new PanelPantallaInicio(this);
@@ -27,34 +27,33 @@ public class ControladorVistas implements ControladorVistasInterfaz{
 		configurarVentana();
 		this.mostrarPantallaInicio();
 	}
-	
-    public void reiniciarPantallaJuego(){
-    	String rutaAnterior = panelPantallaJuego.getRutaFondo();
-        this.panelPantallaJuego = new PanelPantallaJuego(this);
-        ventana.setContentPane(panelPantallaJuego);
-        panelPantallaJuego.setFondoJuego(rutaAnterior);
-        refrescar();
-    }
-	
-	
+
+	public void reiniciarPantallaJuego() {
+		String rutaAnterior = panelPantallaJuego.getRutaFondo();
+		this.panelPantallaJuego = new PanelPantallaJuego(this);
+		ventana.setContentPane(panelPantallaJuego);
+		panelPantallaJuego.setFondoJuego(rutaAnterior);
+		refrescar();
+	}
+
 	public Observer registrarEntidad(EntidadLogica entidadLogica) {
 		Observer observerEntidad = panelPantallaJuego.incorporarEntidad(entidadLogica);
 		observerEntidad.actualizar();
 		refrescar();
 		return observerEntidad;
 	}
-	
+
 	public void eliminarEntidad(Observer observer) {
 		panelPantallaJuego.eliminarEntidad(observer);
 	}
-	
+
 	public Observer registrarEntidadJugador(EntidadLogicaJugador entidadJugador) {
-	    Observer observerJugador = panelPantallaJuego.incorporarEntidadJugador(entidadJugador);
-	    observerJugador.actualizar();
-	    refrescar();
-	    return observerJugador;
+		Observer observerJugador = panelPantallaJuego.incorporarEntidadJugador(entidadJugador);
+		observerJugador.actualizar();
+		refrescar();
+		return observerJugador;
 	}
-	
+
 	public void registrarOyenteVentana(KeyHandler keyHandler) {
 		ventana.addKeyListener(keyHandler);
 		ventana.setFocusable(true);
@@ -69,7 +68,6 @@ public class ControladorVistas implements ControladorVistasInterfaz{
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
 	}
-	
 
 	@Override
 	public void mostrarPantallaInicio() {
@@ -77,31 +75,31 @@ public class ControladorVistas implements ControladorVistasInterfaz{
 		juego.iniciarMusicaMenu();
 		juego.detenerMusicaJuego();
 		refrescar();
-		
+
 	}
 
 	@Override
 	public void mostrarPantallaJuegoModoSecundario() {
-	juego.setFabricaSprites(new FabricaSpritesModoSecundario());
-	juego.cargarFabricaYGenerador();
-	juego.iniciar();
-	panelPantallaJuego.setFondoJuego("/Imagenes/fondoMapa2.png");
-	ventana.setContentPane(panelPantallaJuego);
-	juego.detenerMusicaMenu();
-	juego.iniciarMusicaJuego();
-	refrescar();
+		juego.setFabricaSprites(new FabricaSpritesModoSecundario());
+		juego.cargarFabricaYGenerador();
+		juego.iniciar();
+		panelPantallaJuego.setFondoJuego("/Imagenes/fondoMapa2.png");
+		ventana.setContentPane(panelPantallaJuego);
+		juego.detenerMusicaMenu();
+		juego.iniciarMusicaJuego();
+		refrescar();
 	}
 
 	@Override
 	public void mostrarPantallaJuegoModoOriginal() {
-	juego.setFabricaSprites(new FabricaSpritesModoOriginal());
-	juego.cargarFabricaYGenerador();
-	juego.iniciar();
-	panelPantallaJuego.setFondoJuego("/Imagenes/fondoMapa.png");
-	ventana.setContentPane(panelPantallaJuego);
-	juego.detenerMusicaMenu();
-	juego.iniciarMusicaJuego();
-	refrescar();
+		juego.setFabricaSprites(new FabricaSpritesModoOriginal());
+		juego.cargarFabricaYGenerador();
+		juego.iniciar();
+		panelPantallaJuego.setFondoJuego("/Imagenes/fondoMapa.png");
+		ventana.setContentPane(panelPantallaJuego);
+		juego.detenerMusicaMenu();
+		juego.iniciarMusicaJuego();
+		refrescar();
 	}
 
 	@Override
@@ -112,33 +110,35 @@ public class ControladorVistas implements ControladorVistasInterfaz{
 		juego.detenerMusicaMenu();
 		juego.iniciarMusicaJuego();
 		refrescar();
-		
+
 	}
+
 	public void mostrarPantallaGanar() {
 		ventana.setContentPane(panelPantallaGanar);
 		juego.detenerMusicaJuego();
 		refrescar();
 	}
-	
+
 	public void mostrarPantallaPerder() {
 		ventana.setContentPane(panelPantallaPerder);
 		juego.detenerMusicaJuego();
 		refrescar();
 	}
-	
+
 	public void refrescar() {
 		ventana.revalidate();
 		ventana.repaint();
 	}
-	
+
 	public void terminarJuego() {
 		juego = new Juego();
 		juego.setControladorVistas(this);
 		this.panelPantallaJuego = new PanelPantallaJuego(this);
 
 	}
+
 	public void guardarNombre(String nombre) {
-			juego.recibirNombre(nombre);
+		juego.recibirNombre(nombre);
 	}
 
 }

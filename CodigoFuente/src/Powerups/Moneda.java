@@ -8,14 +8,14 @@ import Mario.SuperMario;
 import Mario.SuperMarioFuego;
 import Visitor.VisitorMario;
 
-public class Moneda extends PowerUp{
-	
+public class Moneda extends PowerUp {
+
 	private static final int PUNTOS_MARIO_NORMAL = 5;
-	
-	public Moneda(Sprite sprite,int x, int y, int ancho, int alto) {
+
+	public Moneda(Sprite sprite, int x, int y, int ancho, int alto) {
 		super(sprite, x, y, ancho, alto);
 	}
-	
+
 	@Override
 	public void acceptMario(VisitorMario visitorMario, int lado) {
 		visitorMario.visit(this);
@@ -48,12 +48,12 @@ public class Moneda extends PowerUp{
 		marioInvencible.getMario().getJuego().reproducirSonidoAgarrarMoneda();
 		eliminarImagen();
 	}
-	
+
 	@Override
 	public void aplicarEfecto(MarioParpadeante marioParpadeante) {
-		
+
 		marioParpadeante.sumarPuntos(PUNTOS_MARIO_NORMAL);
 		eliminarImagen();
-		
+
 	}
 }

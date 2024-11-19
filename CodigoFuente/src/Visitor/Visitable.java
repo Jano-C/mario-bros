@@ -1,5 +1,5 @@
 package Visitor;
 
 public interface Visitable {
-	public void acceptMario(VisitorMario visitorMario, int lado);	
+	public void acceptMario(VisitorMario visitorMario, int lado);
 }

@@ -9,15 +9,15 @@ import Mario.SuperMarioFuego;
 import Visitor.VisitorMario;
 
 public class SuperChampinion extends PowerUp {
-	
+
 	protected static final int PUNTOS_MARIO_NORMAL = 10;
 	protected static final int PUNTOS_MARIO_SUPERMARIO = 50;
-	
-	public SuperChampinion(Sprite sprite,int x,int y, int ancho, int alto) {
-		super(sprite,x,y,ancho,alto);
-		
+
+	public SuperChampinion(Sprite sprite, int x, int y, int ancho, int alto) {
+		super(sprite, x, y, ancho, alto);
+
 	}
-	
+
 	@Override
 	public void acceptMario(VisitorMario visitorMario, int lado) {
 		visitorMario.visit(this);
@@ -48,12 +48,12 @@ public class SuperChampinion extends PowerUp {
 		marioInvencible.sumarPuntos(PUNTOS_MARIO_SUPERMARIO);
 		eliminarImagen();
 	}
-	
+
 	@Override
 	public void aplicarEfecto(MarioParpadeante marioParpadeante) {
-		
+
 		marioParpadeante.sumarPuntos(PUNTOS_MARIO_NORMAL);
 		eliminarImagen();
-		
+
 	}
 }
