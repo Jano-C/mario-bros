@@ -55,7 +55,7 @@ public class BolaDeFuego extends EntidadDinamica implements VisitorBolaDeFuego{
 	}
 
 	@Override
-	public void visit(LadrilloSolido ladrilloSolido) {
+	public void visit(LadrilloSolido ladrilloSolido, int lado) {
 		
 		this.destruir();
 		ladrilloSolido.serAfectadoPorBolaDeFuego();
