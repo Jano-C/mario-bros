@@ -13,61 +13,44 @@ public class DetectorColisiones {
 	public static final int ABAJO_4=4;
 
 	public int colisionaCon(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
-		
-		int ladoColision = NINGUNO;
-		
-		if(colisionaConEntidadDerecha(entidadLogica,entidadColisionada)) {
-			
-			ladoColision = DERECHA_1;
+		int x1 = entidadLogica.getX();
+		int y1 = entidadLogica.getY();
+		int w1 = entidadLogica.getAncho();
+		int h1 = entidadLogica.getAlto();
+
+		int x2 = entidadColisionada.getX();
+		int y2 = entidadColisionada.getY();
+		int w2 = entidadColisionada.getAncho();
+		int h2 = entidadColisionada.getAlto();
+
+		// Check if bounding boxes actually overlap
+		if (x1 + w1 <= x2 || x1 >= x2 + w2 || y1 + h1 <= y2 || y1 >= y2 + h2) {
+			return NINGUNO;
 		}
-		if(colisionaConEntidadAbajo(entidadLogica,entidadColisionada)) {
-			
-			ladoColision = ABAJO_4;
+
+		// Calculate overlap depth on each side
+		int overlapLeft = (x2 + w2) - x1;   // Collided on Left side of A (A is to the right of B)
+		int overlapRight = (x1 + w1) - x2;  // Collided on Right side of A (A is to the left of B)
+		int overlapTop = (y2 + h2) - y1;    // Collided on Top side of A (A is below B)
+		int overlapBottom = (y1 + h1) - y2; // Collided on Bottom side of A (A is above B)
+
+		// Find the side with the minimum overlap
+		int minOverlap = Math.min(Math.min(overlapLeft, overlapRight), Math.min(overlapTop, overlapBottom));
+
+		if (minOverlap == overlapBottom) {
+			return ABAJO_4;
+		} else if (minOverlap == overlapTop) {
+			return ARRIBA_3;
+		} else if (minOverlap == overlapRight) {
+			return DERECHA_1;
+		} else {
+			return IZQUIERDA_2;
 		}
-		if(colisionaConEntidadArriba(entidadLogica,entidadColisionada)) {
-			
-			ladoColision = ARRIBA_3;
-		}
-		if(colisionaConEntidadIzquierda(entidadLogica,entidadColisionada)) {
-			
-			ladoColision = IZQUIERDA_2;
-		}
-		
-		return ladoColision;
 	}
-   
-	private boolean colisionaConEntidadIzquierda(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
-    	return entidadLogica.getX()  < entidadColisionada.getX() + entidadColisionada.getAncho() &&  
-    			entidadLogica.getX() > entidadColisionada.getX() &&
-    			entidadLogica.getY() + entidadLogica.getAlto() - (mejora / 2) > entidadColisionada.getY() &&
-    			entidadLogica.getY() < entidadColisionada.getY() + entidadColisionada.getAlto();
-    }
-   
-    private boolean colisionaConEntidadAbajo(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
-    	return entidadLogica.getY() + entidadLogica.getAlto() > entidadColisionada.getY() && 
-    			entidadLogica.getY() < entidadColisionada.getY() + entidadColisionada.getAlto() && 
-    			entidadLogica.getX() + mejora < entidadColisionada.getX() + entidadColisionada.getAncho() && 
-    			entidadLogica.getX() + entidadLogica.getAncho() - mejora > entidadColisionada.getX(); 
-    }
-   
-    private boolean colisionaConEntidadArriba(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
-	   return entidadLogica.getY() - mejora <= entidadColisionada.getY() + entidadColisionada.getAlto() && 
-			   entidadLogica.getY() + mejora > entidadColisionada.getY() + entidadColisionada.getAlto() && 
-			   entidadLogica.getX()  < entidadColisionada.getX() + entidadColisionada.getAncho() && 
-			   entidadLogica.getX() + entidadLogica.getAncho() > entidadColisionada.getX();
-   }
-    
-    private boolean colisionaConEntidadDerecha(EntidadLogica entidadLogica, EntidadLogica entidadColisionada) {
-    	return entidadLogica.getX() + entidadLogica.getAncho() > entidadColisionada.getX() && 
-    			entidadLogica.getX() + mejora < entidadColisionada.getX() && 
-    			entidadLogica.getY() + entidadLogica.getAlto() - mejora > entidadColisionada.getY() && 
-    			entidadLogica.getY() + mejora < entidadColisionada.getY() + entidadColisionada.getAlto();
-    }
-    
-//Esto hay que sacarlo de aca
-   public void ocultarImagen(EntidadLogica entidadLogica) {
-       entidadLogica.setSprite(new Sprite("/Imagenes/2vacio.png"));
-       entidadLogica.notificarObserver();
-   }
+
+	public void ocultarImagen(EntidadLogica entidadLogica) {
+		entidadLogica.setSprite(new Sprite("/Imagenes/2vacio.png"));
+		entidadLogica.notificarObserver();
+	}
 
 }

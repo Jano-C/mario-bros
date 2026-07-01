@@ -29,11 +29,19 @@ public class GeneradorNiveles {
 	}
 
 	private String[] cargarNivelDesdeArchivo(String rutaArchivo) {
-		try {
-
-			List<String> lineas = Files.readAllLines(Paths.get(rutaArchivo));
-			return lineas.toArray(new String[0]);
-		} catch (IOException e) {
+		try (java.io.InputStream in = this.getClass().getResourceAsStream(rutaArchivo)) {
+			if (in == null) {
+				throw new java.io.FileNotFoundException("Resource not found: " + rutaArchivo);
+			}
+			try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(in, java.nio.charset.StandardCharsets.UTF_8))) {
+				List<String> lineas = new java.util.ArrayList<>();
+				String linea;
+				while ((linea = reader.readLine()) != null) {
+					lineas.add(linea);
+				}
+				return lineas.toArray(new String[0]);
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 			return new String[] {};
 		}
@@ -45,17 +53,17 @@ public class GeneradorNiveles {
 
 		switch (numeroNivel) {
 		case 1:
-			nivelAGenerar = cargarNivelDesdeArchivo("src/Niveles/nivel1.txt");
+			nivelAGenerar = cargarNivelDesdeArchivo("/Niveles/nivel1.txt");
 			break;
 		case 2:
-			nivelAGenerar = cargarNivelDesdeArchivo("src/niveles/nivel2.txt");
+			nivelAGenerar = cargarNivelDesdeArchivo("/Niveles/nivel2.txt");
 			break;
 		case 3:
-			nivelAGenerar = cargarNivelDesdeArchivo("src/niveles/nivel3.txt");
+			nivelAGenerar = cargarNivelDesdeArchivo("/Niveles/nivel3.txt");
 			break;
 
 		default:
-			nivelAGenerar = cargarNivelDesdeArchivo("src/niveles/nivel1.txt");
+			nivelAGenerar = cargarNivelDesdeArchivo("/Niveles/nivel1.txt");
 			break;
 		}
 

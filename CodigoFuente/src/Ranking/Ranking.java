@@ -59,8 +59,24 @@ public class Ranking {
 		}
 	}
 
+	private String obtenerRutaArchivo() {
+		String path1 = "src/Ranking/ranking.txt";
+		String path2 = "CodigoFuente/src/Ranking/ranking.txt";
+
+		if (new java.io.File(path1).exists()) {
+			return path1;
+		}
+		if (new java.io.File(path2).exists()) {
+			return path2;
+		}
+		if (new java.io.File("CodigoFuente/src/Ranking").exists()) {
+			return path2;
+		}
+		return path1;
+	}
+
 	public void cargarRankingDesdeArchivo() {
-		try (BufferedReader reader = new BufferedReader(new FileReader("src/Ranking/ranking.txt"))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(obtenerRutaArchivo()))) {
 			String linea;
 			cantJugadores = 0;
 
@@ -79,7 +95,7 @@ public class Ranking {
 	}
 
 	public void guardarRankingEnArchivo() {
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Ranking/ranking.txt"))) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(obtenerRutaArchivo()))) {
 			for (int pos = 0; pos < cantJugadores; pos++) {
 				Jugador jugador = topRanking[pos];
 				writer.write("Nombre: " + jugador.getNombre() + " Puntaje: " + jugador.getPuntaje());

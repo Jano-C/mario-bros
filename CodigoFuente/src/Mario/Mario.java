@@ -448,7 +448,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	}
 
 	private void corregirPosicionEnColisionPorIzquierda(EntidadLogica entidadColisionada) {
-		this.setX(entidadColisionada.getX() + this.getAncho());
+		this.setX(entidadColisionada.getX() + entidadColisionada.getAncho());
 	}
 
 	private void corregirPosicionEnColisionPorDerecha(EntidadLogica entidadColisionada) {
@@ -456,7 +456,7 @@ public class Mario extends EntidadDinamica implements EntidadLogicaJugador, Visi
 	}
 
 	private void corregirPosicionEnColisionPorAbajo(EntidadLogica entidadColisionada) {
-		this.setY(entidadColisionada.getY() + this.getAlto() + 9);
+		this.setY(entidadColisionada.getY() + entidadColisionada.getAlto());
 	}
 
 }
